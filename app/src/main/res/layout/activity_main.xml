@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="#80444444"-->
+        <!--android:id="@+id/checkloading_id"-->
+        <!--&gt;</RelativeLayout>-->
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/MainActivity_TitleBar"
+    android:background="#13866f"
+    android:paddingLeft="10sp"
+    android:paddingRight="10sp"
+    >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu"
+        android:layout_centerVertical="true"
+        android:id="@+id/Menu_Title_Bar_Id"
+        android:onClick="Menu_Title_Bar"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:id="@+id/Button_Title_Bar"
+        android:text="HOSPITALS"
+        android:onClick="Button_On_Title_Bar"
+
+        android:background="@drawable/roundedbutton"
+
+        android:layout_centerVertical="true"
+        android:textColor="#13866f" />
+
+
+</RelativeLayout>
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent">
+
+        <!-- The navigation drawer -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/drawerPane"
+
+            android:background="#169c81">
+
+            <!-- Profile Box -->
+
+            <RelativeLayout
+                android:id="@+id/profileBox"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:padding="8dp"
+               >
+
+                <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/logotwo"
+                    android:layout_marginTop="15dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:layout_toRightOf="@+id/avatar"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/userName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="CureIsSure"
+                        android:textColor="#fff"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/desc"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="bottom"-->
+                        <!--android:layout_marginTop="4dp"-->
+                        <!--android:text="Detail"-->
+                        <!--android:textColor="#fff"-->
+                        <!--android:textSize="12sp" />-->
+                </LinearLayout>
+            </RelativeLayout>
+
+
+            <LinearLayout
+
+                android:orientation="vertical"
+                android:layout_width="280dp"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/profileBox"
+                android:choiceMode="singleChoice"
+                android:background="#ffffffff"
+                android:paddingRight="5sp"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
+
+
+
+                    <ImageView
+                        android:id="@+id/icon_medical_shop"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/title_medical_shop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"
+                        android:textColor="#13866f"
+                        android:text="Medical Shop"
+                        android:textStyle="bold"
+                        android:layout_alignParentTop="true"
+                        android:layout_toRightOf="@+id/icon_medical_shop"
+                        android:layout_toEndOf="@+id/icon_medical_shop" />
+
+                    <TextView android:id="@+id/subTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Find medical shop"
+                        android:layout_toRightOf="@+id/icon_medical_shop"
+                        android:layout_below="@+id/title_medical_shop"
+                        android:layout_alignParentRight="true"
+                        android:textColor="#13866f"
+                        android:layout_alignParentEnd="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
+
+
+
+                    <ImageView
+                        android:id="@+id/icon_test_center"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/title_test_center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"
+                        android:textColor="#13866f"
+                        android:text="Test Center"
+                        android:textStyle="bold"
+                        android:layout_alignParentTop="true"
+                        android:layout_toRightOf="@+id/icon_test_center"
+                        android:layout_toEndOf="@+id/icon_test_center" />
+
+                    <TextView android:id="@+id/subTitle_test_center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Find test center"
+                        android:layout_toRightOf="@+id/icon_test_center"
+                        android:layout_below="@+id/title_test_center"
+                        android:layout_alignParentRight="true"
+                        android:textColor="#13866f"
+                        android:layout_alignParentEnd="true" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:onClick="RegisterClick"
+                    >
+
+
+
+                    <ImageView
+                        android:id="@+id/icon_register"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/title_register"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"
+                        android:textColor="#13866f"
+                        android:text="Register"
+                        android:textStyle="bold"
+                        android:layout_alignParentTop="true"
+                        android:layout_toRightOf="@+id/icon_register"
+                        android:layout_toEndOf="@+id/icon_register" />
+
+                    <TextView android:id="@+id/subTitle_register"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Registration of Doctors , Hospitals and Test Centers"
+                        android:layout_toRightOf="@+id/icon_register"
+                        android:layout_below="@+id/title_register"
+                        android:layout_alignParentRight="true"
+                        android:textColor="#13866f"
+                        android:layout_alignParentEnd="true" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:onClick="Change_location_click"
+                    >
+
+
+
+                    <ImageView
+                        android:id="@+id/icon_change_location"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/title_change_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"
+                        android:textColor="#13866f"
+                        android:text="Change Location"
+                        android:textStyle="bold"
+                        android:layout_alignParentTop="true"
+                        android:layout_toRightOf="@+id/icon_change_location"
+                        android:layout_toEndOf="@+id/icon_change_location" />
+
+                    <TextView android:id="@+id/subTitle_change_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Something"
+                        android:layout_toRightOf="@+id/icon_change_location"
+                        android:layout_below="@+id/title_change_location"
+                        android:layout_alignParentRight="true"
+                        android:textColor="#13866f"
+                        android:layout_alignParentEnd="true" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:onClick="Aboutclick"
+                    >
+
+
+
+                    <ImageView
+                        android:id="@+id/icon_about"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/title_about"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:gravity="center_vertical"
+                        android:textColor="#13866f"
+                        android:text="About"
+                        android:textStyle="bold"
+                        android:layout_alignParentTop="true"
+                        android:layout_toRightOf="@+id/icon_about"
+                        android:layout_toEndOf="@+id/icon_about" />
+
+                    <TextView android:id="@+id/subTitle_about"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Know about CIS (CureIsSure)"
+                        android:layout_toRightOf="@+id/icon_about"
+                        android:layout_below="@+id/title_about"
+                        android:layout_alignParentRight="true"
+                        android:textColor="#13866f"
+                        android:layout_alignParentEnd="true" />
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!-- List of Actions (pages) -->
+            <!--<ListView-->
+                <!--android:id="@+id/navList"-->
+                <!--android:layout_width="280dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_below="@+id/profileBox"-->
+                <!--android:choiceMode="singleChoice"-->
+                <!--android:background="#ffffffff" />-->
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.DrawerLayout>
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#169c81"
+    android:text="CureIsSure Detail"
+    android:id="@+id/screen_half_id"
+    android:textColor="#ffffff"
+    />
+
+</LinearLayout>
+
+</LinearLayout>
