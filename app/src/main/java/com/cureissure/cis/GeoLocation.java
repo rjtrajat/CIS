@@ -32,7 +32,8 @@ public class GeoLocation extends AppCompatActivity implements LocationListener {
     private static final int PERMISSION_REQUEST_COARSE_LOCATION = 1;
 
     public static String Address_Global = null;
-
+    public static double Longitude_user ;
+    public static double Latititude_user;
     // Flag for GPS status
     boolean isGPSEnabled = false;
 
@@ -122,6 +123,8 @@ public class GeoLocation extends AppCompatActivity implements LocationListener {
             Geocoder geocoder = new Geocoder(this);
             List<Address> addr = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
 
+            Longitude_user = location.getLongitude();
+            Latititude_user = location.getLatitude();
             Address_Global = addr.get(0).getAddressLine(0)+" "+addr.get(0).getAddressLine(1)+" "+addr.get(0).getAddressLine(2)+" "+addr.get(0).getAddressLine(3);
 
            //  Toast.makeText(mContext,addr.get(0).getAddressLine(0)+" "+addr.get(0).getAddressLine(1)+" "+addr.get(0).getAddressLine(2)+" "+addr.get(0).getAddressLine(3), Toast.LENGTH_LONG).show();

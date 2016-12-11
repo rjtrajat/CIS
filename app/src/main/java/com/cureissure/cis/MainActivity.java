@@ -15,6 +15,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -24,7 +25,19 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+
+import cz.msebera.android.httpclient.Header;
+
 import static android.view.View.VISIBLE;
+import  com.cureissure.cis.APIsCall;
 
 public class MainActivity extends AppCompatActivity {
     WifiGPS wifigps;
@@ -186,6 +199,10 @@ public class MainActivity extends AppCompatActivity {
             if(GeoLocation.Address_Global==null) {
         wifigps.checkGPSLocation(locationManager, connectivityManager, alertDialogBuilder);
             }
+            else{
+                APIsCall.detailDoctorAPI();
+            }
+
         }
     }
 
@@ -193,6 +210,16 @@ public class MainActivity extends AppCompatActivity {
     void RegisterClick(View view){
         builder_register.show();
     }
+    void ScheduleClick(View view){
+        APIsCall.detailScheduleAPI();
+    }
+    void MedicalShopClick(View view){
+        APIsCall.detailMedicalShopAPI();
+    }
+    void TestCenterClick(View view){
+        APIsCall.detailTestCenterAPI();
+    }
+
 
     void Aboutclick(View view){
         Intent intent = new Intent(this,Aboutus.class);
@@ -222,6 +249,9 @@ public class MainActivity extends AppCompatActivity {
                 location_loading_alertDialog.show();
                 wifigps.checkGPSLocation(locationManager, connectivityManager, alertDialogBuilder);
             }
+            else{
+                APIsCall.detailDoctorAPI();
+            }
         }
         else{
             button_title.setText("DOCTORS");
@@ -235,10 +265,17 @@ public class MainActivity extends AppCompatActivity {
                 wifigps.checkGPSLocation(locationManager, connectivityManager, alertDialogBuilder);
 
             }
+            else{
+                APIsCall.detailHospitalAPI();
+            }
+
+
+        }
+
         }
 
 
-    }
+
     protected void Menu_Title_Bar(View view){
         final ImageView viewToAnimate = (ImageView) findViewById(R.id.Menu_Title_Bar_Id);
         Animation in = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
