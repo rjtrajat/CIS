@@ -19,11 +19,16 @@ public class APIsCall {
     public static void detailDoctorAPI(){
 
         RequestParams rp = new RequestParams();
-        rp.add("Lon",/*GeoLocation.Longitude_user*/"");
-        rp.add("Lat",/*GeoLocation.Latititude_user*/"");
+        rp.put("Lon",GeoLocation.Longitude_user);
+        rp.put("Lat",GeoLocation.Latititude_user);
 
 
         HttpUtils.get("detailDoctor", rp, new JsonHttpResponseHandler() {
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String response){
+                System.out.println("Response is "+response);
+            }
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 // If the response is JSONObject instead of expected JSONArray
@@ -43,6 +48,7 @@ public class APIsCall {
                 System.out.println("Response is timeline "+timeline);
 
             }
+
         });
 
 
@@ -50,11 +56,14 @@ public class APIsCall {
     public static void detailHospitalAPI(){
 
         RequestParams rp = new RequestParams();
-        rp.add("Lon",/*GeoLocation.Longitude_user*/"");
-        rp.add("Lat",/*GeoLocation.Latititude_user*/"");
-
+        rp.put("Lon",GeoLocation.Longitude_user);
+        rp.put("Lat",GeoLocation.Latititude_user);
 
         HttpUtils.get("detailHospital", rp, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, String response){
+                System.out.println("Response is "+response);
+            }
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 // If the response is JSONObject instead of expected JSONArray
@@ -74,17 +83,24 @@ public class APIsCall {
                 System.out.println("Response is timeline "+timeline);
 
             }
+
         });
 
 
     }
     public static void detailTestCenterAPI(){
         RequestParams rp = new RequestParams();
-        rp.add("Lon",/*GeoLocation.Longitude_user*/"");
-        rp.add("Lat",/*GeoLocation.Latititude_user*/"");
+        rp.put("Lon",GeoLocation.Longitude_user);
+        rp.put("Lat",GeoLocation.Latititude_user);
 
 
         HttpUtils.get("detailTestCenter", rp, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
+                // Pull out the first event on the public timeline
+                System.out.println("Response is timeline "+timeline);
+
+            }
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 // If the response is JSONObject instead of expected JSONArray
@@ -98,20 +114,15 @@ public class APIsCall {
                 }
             }
 
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
-                // Pull out the first event on the public timeline
-                System.out.println("Response is timeline "+timeline);
 
-            }
         });
 
     }
     public static void detailMedicalShopAPI(){
 
         RequestParams rp = new RequestParams();
-        rp.add("Lon",/*GeoLocation.Longitude_user*/"");
-        rp.add("Lat",/*GeoLocation.Latititude_user*/"");
+        rp.put("Lon",GeoLocation.Longitude_user);
+        rp.put("Lat",GeoLocation.Latititude_user);
 
 
         HttpUtils.get("detailMedicalShop", rp, new JsonHttpResponseHandler() {
