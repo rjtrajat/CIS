@@ -6,6 +6,7 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.os.Build;
@@ -16,16 +17,23 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Transformation;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import static android.view.View.VISIBLE;
 
@@ -55,12 +63,18 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout mDrawerPane;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
-    private TextView screen_half;
+    private LinearLayout screen_half;
 
     TextView Location_subtitle_textview;
 
     //for drawer end
     public static int register_index;
+
+    int screenHeight;
+    int screenWidth ;
+
+    //Clicked on list :Id
+    static public String clicked_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         DisplayMetrics displaymetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-        int screenHeight = displaymetrics.heightPixels;
-        int screenWidth = displaymetrics.widthPixels;
+         screenHeight = displaymetrics.heightPixels;
+         screenWidth = displaymetrics.widthPixels;
         View view = findViewById(R.id.MainActivity_TitleBar);
         int viewHeight=(int)(screenHeight*10)/100;
         int viewWidth=(int)(screenWidth*100)/100;
@@ -106,6 +120,13 @@ public class MainActivity extends AppCompatActivity {
         view.getLayoutParams().height=viewHeight;
         view.getLayoutParams().width=viewWidth;
 
+        view = findViewById(R.id.screen_half_textview_id);
+        viewHeight=(int)(screenHeight*5)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+
         //Dialog box for loading
 
         location_loading_builder = new android.support.v7.app.AlertDialog.Builder(this);
@@ -140,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
         //for drawer begin
         // DrawerLayout
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        screen_half = (TextView) findViewById(R.id.screen_half_id);
+        screen_half = (LinearLayout) findViewById(R.id.screen_half_id);
         // Populate the Navigtion Drawer with options
         mDrawerPane = (RelativeLayout) findViewById(R.id.drawerPane);
 
@@ -170,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
 
          wifigps = new WifiGPS();
 
+
     }
 
     void onClickRegister(){
@@ -192,6 +214,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else{
                 APIsCall.detailDoctorAPI();
+                APIsCall.context = this;
             }
 
         }
@@ -200,15 +223,19 @@ public class MainActivity extends AppCompatActivity {
 
     void RegisterClick(View view){
         builder_register.show();
+        APIsCall.context = this;
     }
     void ScheduleClick(View view){
-        APIsCall.detailScheduleAPI();
+       // APIsCall.detailScheduleAPI();
+        APIsCall.context = this;
     }
     void MedicalShopClick(View view){
         APIsCall.detailMedicalShopAPI();
+        APIsCall.context = this;
     }
     void TestCenterClick(View view){
         APIsCall.detailTestCenterAPI();
+        APIsCall.context = this;
     }
 
 
@@ -242,6 +269,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else{
                 APIsCall.detailDoctorAPI();
+                APIsCall.context = this;
             }
         }
         else{
@@ -258,6 +286,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else{
                 APIsCall.detailHospitalAPI();
+                APIsCall.context = this;
             }
 
 
@@ -359,6 +388,143 @@ public class MainActivity extends AppCompatActivity {
            wifigps.checkGPSLocation(locationManager,connectivityManager,alertDialogBuilder);
         }
 
+    }
+
+    public void TableDesign(JSONArray response , String type){
+        System.out.println("Response is table design");
+        TextView view = (TextView)findViewById(R.id.screen_half_textview_id);
+        view.setText("List of "+type);
+
+        String Id = "";
+        String Name = "";
+        String Specialization = "";
+        String Location = "";
+        Double Distance ;
+        Double long_list;
+        Double lat_list;
+        Double long_user = GeoLocation.Longitude_user;
+        Double lat_user = GeoLocation.Latititude_user;
+
+        int len = response.length();
+        int  i = 0;
+        JSONObject jsonObject;
+
+        TableLayout tablelayout = (TableLayout)findViewById(R.id.tablelayout_id);
+        tablelayout.removeAllViews();
+
+        while(len>i){
+            try {
+                jsonObject = response.getJSONObject(i);
+                if (type.equals("Doctors")) {
+                    Name = (String) jsonObject.get("doctorname");
+                    Id = (String) jsonObject.get("cisdocid");
+                }
+                else if (type.equals("Hospitals")) {
+                    Name = (String) jsonObject.get("hospitalname");
+                    Id = (String) jsonObject.get("cishosid");
+                }
+                else if (type.equals("MedicalShops")) {
+                    Name = (String) jsonObject.get("medicalshopname");
+                    Id = (String) jsonObject.get("cismedid");
+                }
+                else if (type.equals("TestCenters")) {
+                    Name = (String) jsonObject.get("testcentername");
+                    Id = (String) jsonObject.get("cistestid");
+                }
+
+                if(!type.equals("MedicalShops"))
+                Specialization = (String)jsonObject.get("specialization");
+                Location = (String)jsonObject.get("fulladdress");
+                long_list = (Double) jsonObject.get("longitude");
+                lat_list = (Double)jsonObject.get("latitude");
+
+                Distance =  CalculateDistance.distanceCal(long_user,lat_user,long_list,lat_list);
+
+
+                TableRow tr = new TableRow(this);
+                tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableLayout.LayoutParams.WRAP_CONTENT));
+
+
+
+                TextView name = new TextView(this);
+
+                name.setWidth((screenWidth*20)/100);
+
+                name.setText(Name);
+
+              //  devicename.setTextColor(Color.WHITE);
+                name.setTextSize(13);
+                name.setPadding(10,0,10,0);
+
+
+                tr.addView(name);
+
+if(!type.equals("MedicalShops")){
+                    TextView specialization = new TextView(this);
+
+                    specialization.setWidth((screenWidth * 20) / 100);
+
+                    specialization.setText(Specialization);
+
+                    //  devicename.setTextColor(Color.WHITE);
+                    specialization.setTextSize(13);
+                    specialization.setPadding(10, 0, 10, 0);
+
+
+                    tr.addView(specialization);
+                }
+                TextView address = new TextView(this);
+
+                address.setWidth((screenWidth*20)/100);
+
+                address.setText(Location);
+
+                //  devicename.setTextColor(Color.WHITE);
+                address.setTextSize(13);
+                address.setPadding(10,0,10,0);
+
+
+                tr.addView(address);
+
+                TextView distance = new TextView(this);
+
+                distance.setWidth((screenWidth*20)/100);
+
+                distance.setText(Double.toString(Distance));
+
+                //  devicename.setTextColor(Color.WHITE);
+                distance.setTextSize(13);
+                distance.setPadding(10,0,10,0);
+
+
+                tr.addView(distance);
+
+                tr.setGravity(Gravity.CENTER);
+                tr.setTag(Id);
+                tr.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                       DetailContent(view);
+                    }
+                });
+
+                tablelayout.addView(tr,new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
+
+            }
+            catch (Exception e){
+
+            }
+            i++;
+        }
+    }
+    public void DetailContent(View view){
+
+
+
+        clicked_id = (String)view.getTag();
+
+        Intent myIntent = new Intent(this, DetailContent.class);
+        startActivity(myIntent);
     }
 
 }
