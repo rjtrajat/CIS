@@ -39,6 +39,12 @@
         <activity
             android:name=".DetailContent"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Schedule_page"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".AppointmentDetail"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

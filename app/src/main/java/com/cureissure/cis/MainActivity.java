@@ -227,7 +227,9 @@ public class MainActivity extends AppCompatActivity {
     }
     void ScheduleClick(View view){
        // APIsCall.detailScheduleAPI();
-        APIsCall.context = this;
+       // APIsCall.context = this;
+        Intent intent = new Intent(this,Schedule_page.class);
+        startActivity(intent);
     }
     void MedicalShopClick(View view){
         APIsCall.detailMedicalShopAPI();
