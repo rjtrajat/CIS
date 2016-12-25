@@ -228,14 +228,26 @@ public class MainActivity extends AppCompatActivity {
     void ScheduleClick(View view){
        // APIsCall.detailScheduleAPI();
        // APIsCall.context = this;
-        Intent intent = new Intent(this,Schedule_page.class);
+        Intent intent = new Intent(this,AppointmentDetail.class);
         startActivity(intent);
     }
     void MedicalShopClick(View view){
+
+        if(visible==true) {
+            collapse(mDrawerLayout,screen_half,false);
+            visible=false;
+        }
+
         APIsCall.detailMedicalShopAPI();
         APIsCall.context = this;
     }
     void TestCenterClick(View view){
+
+        if(visible==true) {
+            collapse(mDrawerLayout,screen_half,false);
+            visible=false;
+        }
+
         APIsCall.detailTestCenterAPI();
         APIsCall.context = this;
     }
@@ -262,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
             button_title.setText("HOSPITALS");
             if(visible==true) {
                 collapse(mDrawerLayout,screen_half,false);
-                visible=false; visible=false;
+                visible=false;
             }
             WifiGPS.ViewForGPSWiFi = this;
             if(GeoLocation.Address_Global==null) {

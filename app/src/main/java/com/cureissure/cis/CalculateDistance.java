@@ -24,6 +24,7 @@ public class CalculateDistance {
 
         distance =  (Math.round(AVERAGE_RADIUS_OF_EARTH_KM * c));
 
+        System.out.println("Response is dis "+distance);
 
         return distance;
 

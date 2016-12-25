@@ -25,10 +25,12 @@ public class APIsCall {
     public static void detailDoctorAPI() {
 
         RequestParams rp = new RequestParams();
-//        rp.put("Lon", GeoLocation.Longitude_user);
-//        rp.put("Lat", GeoLocation.Latititude_user);
-        rp.put("Lon", 77.88);
-        rp.put("Lat", 88.12);
+        rp.put("Lon", GeoLocation.Longitude_user);
+        rp.put("Lat", GeoLocation.Latititude_user);
+//        rp.put("Lon", 77.88);
+//        rp.put("Lat", 88.12);
+
+        System.out.println("Response is lon "+GeoLocation.Longitude_user+" "+GeoLocation.Latititude_user);
 
         HttpUtils.get("detailDoctor", rp, new JsonHttpResponseHandler() {
 
