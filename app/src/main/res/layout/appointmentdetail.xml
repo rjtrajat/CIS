@@ -32,4 +32,275 @@
 
 
     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/linear_appointment_detail_id"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20sp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please Enter CIS Appointment No."
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/appointment_detail_edittext_id"
+            android:maxLines="1"
+            />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/appointmet_detail_submit_register_id"
+            android:layout_gravity="center_horizontal"
+
+            android:layout_marginTop="10sp"
+            >
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/Button_appointment_detail_Bar"
+                android:text="Check"
+
+                android:onClick="check_button"
+                android:background="@drawable/roundedbutton"
+
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:textColor="#13866f" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_appointment_error_id"
+            android:text="Please enter Correct CIS Appointment No."
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/detail_appointment_complete_detail_id"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_appointment__parent_uniquekeyappointment_id"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CIS Appointment No. : "
+                android:textColor="#169c81"
+
+                android:layout_alignParentLeft="true" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_appointment_uniquekeyappointment_id"
+                android:textColor="#169c81"
+                android:text=""
+                android:layout_alignParentRight="true"
+
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/detail_appointment__parent_nameofpatient_id"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Patient Name : "
+                android:textColor="#169c81"
+
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_appointment_nameofpatient_id"
+                android:textColor="#169c81"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_appointment__parent_contactofpatient_id"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Patient Contact : "
+                android:textColor="#169c81"
+
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_appointment_contactofpatient_id"
+                android:textColor="#169c81"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_appointment__parent_mailidofpatient_id"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Patient Mail : "
+                android:textColor="#169c81"
+
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_appointment_mailidofpatient_id"
+                android:textColor="#169c81"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_appointment__parent_problemdescriptionofpatient_id"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description : "
+                android:textColor="#169c81"
+
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_appointment_problemdescriptionofpatient_id"
+                android:textColor="#169c81"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_appointment__parent_fulladdressofpatient_id"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Patient Address : "
+                android:textColor="#169c81"
+
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_appointment_fulladdressofpatient_id"
+                android:textColor="#169c81"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_appointment__parent_statusvalue_id"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Appoinment Status : "
+                android:textColor="#169c81"
+
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_appointment_statusvalue_id"
+                android:textColor="#169c81"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_appointment__parent_statusdatetime_id"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status Date: "
+                android:textColor="#169c81"
+
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_appointment_statusdatetime_id"
+                android:textColor="#169c81"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_appointment__parent_timeanddateofappointment_id"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Appointment Date: "
+                android:textColor="#169c81"
+
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_appointment_timeanddateofappointment_id"
+                android:textColor="#169c81"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_appointment__parent_paid_id"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment Detail :"
+                android:textColor="#169c81"
+
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_appointment_paid_id"
+                android:textColor="#169c81"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+
+    </LinearLayout>
 </LinearLayout>

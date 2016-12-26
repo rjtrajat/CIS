@@ -110,7 +110,7 @@ public class APIsCall {
 
     public static void detailScheduleAPI(String Id) {
 
-
+        System.out.println("Response is unique "+Id);
 
         RequestParams rp = new RequestParams();
 
@@ -127,16 +127,22 @@ public class APIsCall {
                 System.out.println("Response is json detail " + response);
                 try {
                     JSONObject serverResp = new JSONObject(response.toString());
-                    DetailContent detailContent = (DetailContent) context;
-                    detailContent.DetailDesign(response);
+                    AppointmentDetail  appointmentDetail = (AppointmentDetail) context;
+                    appointmentDetail.detailDesign(response);
                 } catch (JSONException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
 
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
 
+                AppointmentDetail  appointmentDetail = (AppointmentDetail) context;
+                appointmentDetail.notFoundId();
 
+            }
         });
 
     }
@@ -263,4 +269,68 @@ public class APIsCall {
 
         });
     }
+
+    public static void detailIndividualDoctorAppointAPI(String Id) {
+
+
+        RequestParams rp = new RequestParams();
+
+        rp.put("cis_doc_id", Id);
+
+
+        HttpUtils.get("detailIndividualDoctorAppoint", rp, new JsonHttpResponseHandler() {
+
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                // If the response is JSONObject instead of expected JSONArray
+                Log.d("asd", "---------------- this is response : " + response);
+                System.out.println("Response is json detail " + response);
+                try {
+                    JSONObject serverResp = new JSONObject(response.toString());
+                    AppointmentDetail appointmentDetail = (AppointmentDetail) context;
+                    appointmentDetail.updateDoctorHospitalAppointed(response);
+                } catch (JSONException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+
+
+
+        });
+
+
+    }
+
+    public static void detailIndividualHospitalAppointAPI(String Id) {
+
+        RequestParams rp = new RequestParams();
+
+        rp.put("cis_hos_id", Id);
+
+
+        HttpUtils.get("detailIndividualHospitalAppoint", rp, new JsonHttpResponseHandler() {
+
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                // If the response is JSONObject instead of expected JSONArray
+                Log.d("asd", "---------------- this is response : " + response);
+                System.out.println("Response is json detail " + response);
+                try {
+                    JSONObject serverResp = new JSONObject(response.toString());
+                    AppointmentDetail appointmentDetail = (AppointmentDetail) context;
+                    appointmentDetail.updateDoctorHospitalAppointed(response);
+                } catch (JSONException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+
+
+
+        });
+    }
+
 }
