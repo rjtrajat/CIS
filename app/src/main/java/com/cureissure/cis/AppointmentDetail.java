@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import org.json.JSONObject;
 
+import java.util.Date;
+
 import static android.view.View.VISIBLE;
 
 /**
@@ -153,9 +155,118 @@ APIsCall.detailScheduleAPI(editText.getText().toString());
     }
     }
 
-    public void updateDoctorHospitalAppointed(JSONObject jsonObject){
+    public void updateDoctorAppointed(JSONObject jsonObject){
 
-        
+        System.out.println("Response is coming individual");
+     //   String cisdocid;
+    //   double longitude;
+    //    double latitude;
+        String fulladdress;
+         String aboutdoctor ;
+        String mailid ;
+         String contact;
+         String experience;
+        String specialization;
+         String doctorname;
+        try{
+        //    cisdocid = (String) jsonObject.get("cisdocid");
+            fulladdress= (String) jsonObject.get("fulladdress");
+            aboutdoctor = (String) jsonObject.get("aboutdoctor");
+            mailid= (String) jsonObject.get("mailid");
+            contact = (String) jsonObject.get("contact");
+            experience= (String) jsonObject.get("experience");
+            specialization = (String) jsonObject.get("specialization");
+            doctorname= (String) jsonObject.get("doctorname");
+
+            TextView textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_name_id);
+            textView.setText("Doctor Name :");
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_name_id);
+            textView.setText(doctorname);
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_specialization_id);
+            textView.setText("Specialization : " );
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_specialization_id);
+            textView.setText(specialization);
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_experience_id);
+            textView.setText("Experience : " );
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_experience_id);
+            textView.setText(experience.toString());
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_contact_id);
+            textView.setText("Contact : " );
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_contact_id);
+            textView.setText(contact);
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_mail_id);
+            textView.setText("Mail Id : " );
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_mail_id);
+            textView.setText(mailid);
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_about_id);
+            textView.setText("About Doctor : " );
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_about_id);
+            textView.setText(aboutdoctor);
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_fulladdress_id);
+            textView.setText("Address : " );
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_fulladdress_id);
+            textView.setText(fulladdress);
+        }
+        catch (Exception e){
+
+        }
+
+    }
+    public void updateHospitalAppointed(JSONObject jsonObject){
+     //   String cishosid;
+      //  double longitude;
+      //   double latitude;
+        String fulladdress;
+        String abouthospital ;
+        String mailid ;
+         String contact;
+         String established ;
+         String specialization;
+         String hospitalname;
+        try{
+         //   cishosid = (String) jsonObject.get("cishosid");
+            fulladdress= (String) jsonObject.get("fulladdress");
+            abouthospital = (String) jsonObject.get("abouthospital");
+            mailid= (String) jsonObject.get("mailid");
+            contact = (String) jsonObject.get("contact");
+            established= (String) jsonObject.get("established");
+            specialization = (String) jsonObject.get("specialization");
+            hospitalname= (String) jsonObject.get("hospitalname");
+
+            TextView textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_name_id);
+            textView.setText("Hospital Name :");
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_name_id);
+            textView.setText(hospitalname);
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_specialization_id);
+            textView.setText("Specialization : " );
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_specialization_id);
+            textView.setText(specialization);
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_experience_id);
+            textView.setText("Established : " );
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_experience_id);
+            textView.setText(established.toString());
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_contact_id);
+            textView.setText("Contact : " );
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_contact_id);
+            textView.setText(contact);
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_mail_id);
+            textView.setText("Mail Id : " );
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_mail_id);
+            textView.setText(mailid);
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_about_id);
+            textView.setText("About Hospital : " );
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_about_id);
+            textView.setText(abouthospital);
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_fulladdress_id);
+            textView.setText("Address : " );
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_fulladdress_id);
+            textView.setText(fulladdress);
+
+
+        }
+        catch (Exception e){
+
+        }
     }
 
     public void notFoundId(){

@@ -301,6 +301,153 @@
                 android:textColor="#169c81"
                 android:layout_alignParentRight="true" />
         </RelativeLayout>
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/detail_appointment__parent_dochos_name_id"
+        >
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Payment Detail :"
+            android:textColor="#169c81"
+            android:id="@+id/detail_appointment_dochos_one_name_id"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_appointment_dochos_name_id"
+            android:textColor="#169c81"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_appointment__parent_dochos_specialization_id"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment Detail :"
+                android:textColor="#169c81"
+                android:id="@+id/detail_appointment_dochos_one_specialization_id"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_appointment_dochos_specialization_id"
+                android:textColor="#169c81"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_appointment__parent_dochos_experience_id"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment Detail :"
+                android:textColor="#169c81"
+                android:id="@+id/detail_appointment_dochos_one_experience_id"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_appointment_dochos_experience_id"
+                android:textColor="#169c81"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_appointment__parent_dochos_contact_id"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment Detail :"
+                android:textColor="#169c81"
+                android:id="@+id/detail_appointment_dochos_one_contact_id"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_appointment_dochos_contact_id"
+                android:textColor="#169c81"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_appointment__parent_dochos_mail_id"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment Detail :"
+                android:textColor="#169c81"
+                android:id="@+id/detail_appointment_dochos_one_mail_id"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_appointment_dochos_mail_id"
+                android:textColor="#169c81"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_appointment__parent_dochos_about_id"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment Detail :"
+                android:textColor="#169c81"
+                android:id="@+id/detail_appointment_dochos_one_about_id"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_appointment_dochos_about_id"
+                android:textColor="#169c81"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/detail_appointment__parent_dochos_fulladdress_id"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment Detail :"
+                android:textColor="#169c81"
+                android:id="@+id/detail_appointment_dochos_one_fulladdress_id"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/detail_appointment_dochos_fulladdress_id"
+                android:textColor="#169c81"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

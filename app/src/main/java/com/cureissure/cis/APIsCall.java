@@ -289,7 +289,7 @@ public class APIsCall {
                 try {
                     JSONObject serverResp = new JSONObject(response.toString());
                     AppointmentDetail appointmentDetail = (AppointmentDetail) context;
-                    appointmentDetail.updateDoctorHospitalAppointed(response);
+                    appointmentDetail.updateDoctorAppointed(response);
                 } catch (JSONException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -321,7 +321,7 @@ public class APIsCall {
                 try {
                     JSONObject serverResp = new JSONObject(response.toString());
                     AppointmentDetail appointmentDetail = (AppointmentDetail) context;
-                    appointmentDetail.updateDoctorHospitalAppointed(response);
+                    appointmentDetail.updateHospitalAppointed(response);
                 } catch (JSONException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();

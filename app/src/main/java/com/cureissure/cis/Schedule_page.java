@@ -38,6 +38,40 @@ public class Schedule_page extends AppCompatActivity{
         viewWidth = (int)(screenWidth*7)/100;
         view.getLayoutParams().height=viewHeight;
         view.getLayoutParams().width=viewWidth;
+
+        view = findViewById(R.id.schedule_linear_name_id);
+        viewHeight=(int)(screenHeight*11)/100;
+        viewWidth = (int)(screenWidth*80)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+        view = findViewById(R.id.schedule_linear_email_id);
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+        view = findViewById(R.id.schedule_linear_mobile_id);
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+        view = findViewById(R.id.schedule_linear_description_id);
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+
+//        viewHeight=(int)(screenHeight*20)/100;
+//        view = findViewById(R.id.register_linear_experience_id);
+//        view.getLayoutParams().height=viewHeight;
+//        view.getLayoutParams().width=viewWidth;
+
+        viewHeight=(int)(screenHeight*11)/100;
+        view = findViewById(R.id.schedule_linear_location_id);
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+        viewHeight=(int)(screenHeight*11)/100;
+        view = findViewById(R.id.schedule_linear_submit_register_id);
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
     }
     public void backtoDetailContent(View view){
         ImageView image_back  =(ImageView) findViewById(R.id.Schedule_Page_back_Title_Bar_Id);
@@ -47,5 +81,8 @@ public class Schedule_page extends AppCompatActivity{
 
         Intent intent = new Intent(this,DetailContent.class);
         startActivity(intent);
+    }
+    public void schedule_button(View view){
+
     }
 }
