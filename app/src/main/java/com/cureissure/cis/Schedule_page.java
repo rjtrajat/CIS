@@ -8,14 +8,42 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TimePicker;
+
+import org.json.JSONObject;
+
+import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 import static android.view.View.VISIBLE;
+import static com.cureissure.cis.MainActivity.clicked_id;
 
 /**
  * Created by RAJAT SINGH on 12/25/2016.
  */
 
 public class Schedule_page extends AppCompatActivity{
+
+    public static android.support.v7.app.AlertDialog.Builder location_loading_builder;
+    public static android.support.v7.app.AlertDialog location_loading_alertDialog;
+    ImageView imageDatepicker ;
+    ImageView imageTimepicker;
+    TextView txtDate, txtTime;
+
+    private int mYear, mMonth, mDay, mHour, mMinute;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +73,17 @@ public class Schedule_page extends AppCompatActivity{
         view.getLayoutParams().height=viewHeight;
         view.getLayoutParams().width=viewWidth;
 
+        viewHeight=(int)(screenHeight*6)/100;
+        view = findViewById(R.id.schedule_linear_date_id);
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+        viewHeight=(int)(screenHeight*6)/100;
+        view = findViewById(R.id.schedule_linear_time_id);
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+        viewHeight=(int)(screenHeight*11)/100;
         view = findViewById(R.id.schedule_linear_email_id);
         view.getLayoutParams().height=viewHeight;
         view.getLayoutParams().width=viewWidth;
@@ -58,20 +97,20 @@ public class Schedule_page extends AppCompatActivity{
         view.getLayoutParams().width=viewWidth;
 
 
-//        viewHeight=(int)(screenHeight*20)/100;
-//        view = findViewById(R.id.register_linear_experience_id);
-//        view.getLayoutParams().height=viewHeight;
-//        view.getLayoutParams().width=viewWidth;
-
-        viewHeight=(int)(screenHeight*11)/100;
-        view = findViewById(R.id.schedule_linear_location_id);
-        view.getLayoutParams().height=viewHeight;
-        view.getLayoutParams().width=viewWidth;
-
         viewHeight=(int)(screenHeight*11)/100;
         view = findViewById(R.id.schedule_linear_submit_register_id);
         view.getLayoutParams().height=viewHeight;
         view.getLayoutParams().width=viewWidth;
+
+        imageDatepicker = (ImageView)findViewById(R.id.schedule_date_image_id);
+        imageTimepicker = (ImageView)findViewById(R.id.schedule_time_image_id);
+
+        txtDate = (TextView)findViewById(R.id.schedule_date_value_image_id);
+        txtTime  = (TextView)findViewById(R.id.schedule_time_value_image_id);
+
+        location_loading_builder = new android.support.v7.app.AlertDialog.Builder(this);
+        location_loading_alertDialog =  location_loading_builder.create();
+
     }
     public void backtoDetailContent(View view){
         ImageView image_back  =(ImageView) findViewById(R.id.Schedule_Page_back_Title_Bar_Id);
@@ -84,5 +123,163 @@ public class Schedule_page extends AppCompatActivity{
     }
     public void schedule_button(View view){
 
+        APIsCall.getLatestUniquePatientKey();
+        APIsCall.context = this;
+
+    }
+
+    public void schedule_update(JSONObject jsonObject){
+try {
+    String uniquekeyappointment = (String) jsonObject.get("uniquekeyappointment");
+    String parseNumber = uniquekeyappointment.replace("PATIENT_KEY_","");
+    Long number = Long.parseLong(parseNumber);
+    number++;
+    uniquekeyappointment = "PATIENT_KEY_"+number;
+    String nameofpatient ;
+    String contactofpatient ;
+    String mailidofpatient;
+    Double longitudeofpatient;
+    Double latitudeofpatient;
+    String problemdescriptionofpatient;
+    String fulladdressofpatient;
+    String statusvalue;
+    String statusdatetime;
+    String dateofappointment;
+    String timeofappointment;
+    Boolean paid;
+    String appointmenttype = "";
+    String appointmenttypekey;
+
+    EditText editText = (EditText)findViewById(R.id.schedule_name_edit_id);
+    nameofpatient = editText.getText().toString();
+    editText = (EditText)findViewById(R.id.schedule_mobile_edit_id);
+    contactofpatient = editText.getText().toString();
+    editText = (EditText)findViewById(R.id.schedule_email_edit_id);
+    mailidofpatient = editText.getText().toString();
+    longitudeofpatient = GeoLocation.Longitude_user;
+    latitudeofpatient = GeoLocation.Latititude_user;
+    editText = (EditText)findViewById(R.id.schedule_description_edit_id);
+    problemdescriptionofpatient = editText.getText().toString();
+    fulladdressofpatient = GeoLocation.Address_Global;
+    statusvalue = "Booked";
+    statusdatetime = "31-11-2016";
+    TextView textView = (TextView) findViewById(R.id.schedule_date_value_image_id);
+    dateofappointment = textView.getText().toString();
+   textView = (TextView) findViewById(R.id.schedule_time_value_image_id);
+    timeofappointment = textView.getText().toString();
+    paid = false;
+    if(MainActivity.clicked_id.contains("CIS_DOC")){
+        appointmenttype = "DOCTOR";
+    }
+    if(MainActivity.clicked_id.contains("CIS_HOS")){
+        appointmenttype = "HOSPITAL";
+    }
+    if(MainActivity.clicked_id.contains("CIS_TEST")){
+        appointmenttype = "TESTCENTER";
+    }
+    appointmenttypekey = MainActivity.clicked_id;
+
+
+
+    if(nameofpatient.equals("")||contactofpatient.equals("")||problemdescriptionofpatient.equals("")||dateofappointment.equals("")||timeofappointment.equals(""))
+    {
+//        location_loading_builder = new android.support.v7.app.AlertDialog.Builder(this);
+//        location_loading_alertDialog =  location_loading_builder.create();
+        String msg = "Please Enter ";
+        if(nameofpatient.equals("")){
+            msg = msg+"Patient Name ";
+        }
+        if(contactofpatient.equals("")){
+            msg = msg+"Contact ";
+        }
+        if(problemdescriptionofpatient.equals("")){
+            msg = msg+"Description ";
+        }
+        if(dateofappointment.equals("")){
+            msg = msg+"Date ";
+        }
+        if(timeofappointment.equals("")){
+            msg = msg+"Time ";
+        }
+        location_loading_builder.setMessage(msg);
+        location_loading_alertDialog =  location_loading_builder.create();
+        location_loading_alertDialog.show();
+    }
+else {
+        APIsCall.setPatientDetailentry(uniquekeyappointment, nameofpatient, contactofpatient, mailidofpatient, longitudeofpatient, latitudeofpatient, problemdescriptionofpatient, fulladdressofpatient, statusvalue, statusdatetime, dateofappointment, timeofappointment, paid, appointmenttype, appointmenttypekey);
+        APIsCall.context = this;
+    }
+}
+catch (Exception e){
+
+}
+    }
+
+    public void imageTimepicker(View view){
+        final Calendar c = Calendar.getInstance();
+        mHour = c.get(Calendar.HOUR_OF_DAY);
+        mMinute = c.get(Calendar.MINUTE);
+
+        // Launch Time Picker Dialog
+        TimePickerDialog timePickerDialog = new TimePickerDialog(this,
+                new TimePickerDialog.OnTimeSetListener() {
+
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay,
+                                          int minute) {
+
+                        txtTime.setText(hourOfDay + ":" + minute);
+                    }
+                }, mHour, mMinute, false);
+
+
+        timePickerDialog.show();
+
+
+    }
+    public void imageDatepicker(View view){
+        // Get Current Date
+        final Calendar c = Calendar.getInstance();
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
+
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                new DatePickerDialog.OnDateSetListener() {
+
+                    @Override
+                    public void onDateSet(DatePicker view, int year,
+                                          int monthOfYear, int dayOfMonth) {
+
+                        txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+
+                    }
+                }, mYear, mMonth, mDay);
+        datePickerDialog.show();
+    }
+
+    public void goToMain(){
+        System.out.println("Response is msg shown");
+
+        location_loading_builder.setMessage("Appointment Scheduled");
+        location_loading_alertDialog =  location_loading_builder.create();
+        location_loading_alertDialog.setCanceledOnTouchOutside(false);
+        location_loading_alertDialog.show();
+
+        Timer timer = new Timer();
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                goToMainBack();
+            }
+        },3000);
+
+
+    }
+    public void goToMainBack(){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 }

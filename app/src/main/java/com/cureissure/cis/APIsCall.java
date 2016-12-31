@@ -333,4 +333,80 @@ public class APIsCall {
         });
     }
 
+    public static void getLatestUniquePatientKey(){
+
+        RequestParams rp = new RequestParams();
+
+
+
+
+        HttpUtils.get("latestUniquePatientKey", rp, new JsonHttpResponseHandler() {
+
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                // If the response is JSONObject instead of expected JSONArray
+                Log.d("asd", "---------------- this is response : " + response);
+                System.out.println("Response is json detail " + response);
+                try {
+                    JSONObject serverResp = new JSONObject(response.toString());
+                    Schedule_page schedule_page = (Schedule_page) context;
+                    schedule_page.schedule_update(response);
+
+                } catch (JSONException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+
+
+
+        });
+    }
+
+    public static void setPatientDetailentry(String uniquekeyappointment,String nameofpatient,String contactofpatient, String mailidofpatient,Double longitudeofpatient,Double latitudeofpatient,String problemdescriptionofpatient,String fulladdressofpatient,String statusvalue,String statusdatetime, String dateofappointment, String timeofappointment,Boolean paid,String appointmenttype,String appointmenttypekey){
+        RequestParams rp = new RequestParams();
+        rp.put("uniquekeyappointment", uniquekeyappointment);
+        rp.put("nameofpatient", nameofpatient);
+        rp.put("contactofpatient", contactofpatient);
+        rp.put("mailidofpatient", mailidofpatient);
+        rp.put("longitudeofpatient", longitudeofpatient);
+        rp.put("latitudeofpatient", latitudeofpatient);
+        rp.put("problemdescriptionofpatient", problemdescriptionofpatient);
+        rp.put("fulladdressofpatient", fulladdressofpatient);
+        rp.put("statusvalue", statusvalue);
+        rp.put("statusdatetime", statusdatetime);
+        rp.put("dateofappointment", dateofappointment);
+        rp.put("timeofappointment", timeofappointment);
+        rp.put("paid", paid);
+        rp.put("appointmenttype", appointmenttype);
+        rp.put("appointmenttypekey", appointmenttypekey);
+
+        HttpUtils.get("patientDetailentry", rp, new JsonHttpResponseHandler() {
+
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                // If the response is JSONObject instead of expected JSONArray
+                Log.d("asd", "---------------- this is response : " + response);
+                System.out.println("Response is json detail " + response);
+                try {
+                    JSONObject serverResp = new JSONObject(response.toString());
+                    Schedule_page schedule_page = (Schedule_page) context;
+                    schedule_page.goToMain();
+
+
+
+                } catch (JSONException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+
+
+
+        });
+
+    }
+
 }
