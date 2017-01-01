@@ -43,6 +43,8 @@ public class Schedule_page extends AppCompatActivity{
     ImageView imageTimepicker;
     TextView txtDate, txtTime;
 
+    public String MailPatient;
+    public String ContactPatient;
     private int mYear, mMonth, mDay, mHour, mMinute;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -154,8 +156,10 @@ try {
     nameofpatient = editText.getText().toString();
     editText = (EditText)findViewById(R.id.schedule_mobile_edit_id);
     contactofpatient = editText.getText().toString();
+    ContactPatient = contactofpatient;
     editText = (EditText)findViewById(R.id.schedule_email_edit_id);
     mailidofpatient = editText.getText().toString();
+    MailPatient = mailidofpatient;
     longitudeofpatient = GeoLocation.Longitude_user;
     latitudeofpatient = GeoLocation.Latititude_user;
     editText = (EditText)findViewById(R.id.schedule_description_edit_id);
@@ -260,6 +264,10 @@ catch (Exception e){
     }
 
     public void goToMain(){
+
+
+
+
         System.out.println("Response is msg shown");
 
         location_loading_builder.setMessage("Appointment Scheduled");

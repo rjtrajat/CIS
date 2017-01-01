@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.location.Address;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.os.Build;
@@ -18,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -36,6 +38,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import static android.view.View.VISIBLE;
+import static com.cureissure.cis.APIsCall.context;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -214,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else{
                 APIsCall.detailDoctorAPI();
-                APIsCall.context = this;
+                context = this;
             }
 
         }
@@ -223,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
 
     void RegisterClick(View view){
         builder_register.show();
-        APIsCall.context = this;
+        context = this;
     }
     void ScheduleClick(View view){
        // APIsCall.detailScheduleAPI();
@@ -239,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         APIsCall.detailMedicalShopAPI();
-        APIsCall.context = this;
+        context = this;
     }
     void TestCenterClick(View view){
 
@@ -249,7 +252,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         APIsCall.detailTestCenterAPI();
-        APIsCall.context = this;
+        context = this;
     }
 
 
@@ -283,7 +286,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else{
                 APIsCall.detailDoctorAPI();
-                APIsCall.context = this;
+                context = this;
             }
         }
         else{
@@ -300,7 +303,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else{
                 APIsCall.detailHospitalAPI();
-                APIsCall.context = this;
+                context = this;
             }
 
 
@@ -430,25 +433,25 @@ public class MainActivity extends AppCompatActivity {
             try {
                 jsonObject = response.getJSONObject(i);
                 if (type.equals("Doctors")) {
-                    Name = (String) jsonObject.get("doctorname");
+                    Name = "Doctor Name : "+(String) jsonObject.get("doctorname");
                     Id = (String) jsonObject.get("cisdocid");
                 }
                 else if (type.equals("Hospitals")) {
-                    Name = (String) jsonObject.get("hospitalname");
+
+                    Name = "Hospital Name : "+(String) jsonObject.get("hospitalname");
                     Id = (String) jsonObject.get("cishosid");
                 }
                 else if (type.equals("MedicalShops")) {
-                    Name = (String) jsonObject.get("medicalshopname");
+                    Name = "Medical Shop Name : "+(String) jsonObject.get("medicalshopname");
                     Id = (String) jsonObject.get("cismedid");
                 }
                 else if (type.equals("TestCenters")) {
-                    Name = (String) jsonObject.get("testcentername");
+                    Name = "Test Center Name : "+(String) jsonObject.get("testcentername");
                     Id = (String) jsonObject.get("cistestid");
                 }
 
-                if(!type.equals("MedicalShops"))
-                Specialization = (String)jsonObject.get("specialization");
-                Location = (String)jsonObject.get("fulladdress");
+
+                Location = "Address : "+(String)jsonObject.get("fulladdress");
                 long_list = (Double) jsonObject.get("longitude");
                 lat_list = (Double)jsonObject.get("latitude");
 
@@ -456,64 +459,35 @@ public class MainActivity extends AppCompatActivity {
 
 
                 TableRow tr = new TableRow(this);
+
                 tr.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,TableLayout.LayoutParams.WRAP_CONTENT));
 
+                LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
+                 View item = inflater.inflate(R.layout.rowlayout, tr, false);
+                int viewWidth = (int)(screenWidth*90);
+                item.getLayoutParams().width=viewWidth;
 
-                TextView name = new TextView(this);
+                TextView textViewImage = (TextView)item.findViewById(R.id.rowlayout_image_id);
+                TextView textViewname = (TextView)item.findViewById(R.id.rowlayout_linear_name_id);
+                TextView textViewspecialization = (TextView)item.findViewById(R.id.rowlayout_linear_specialization_id);
+                TextView textViewaddress = (TextView)item.findViewById(R.id.rowlayout_linear_address_id);
+                TextView textViewdistance = (TextView)item.findViewById(R.id.rowlayout_linear_distance_id);
 
-                name.setWidth((screenWidth*20)/100);
-
-                name.setText(Name);
-
-              //  devicename.setTextColor(Color.WHITE);
-                name.setTextSize(13);
-                name.setPadding(10,0,10,0);
-
-
-                tr.addView(name);
-
-if(!type.equals("MedicalShops")){
-                    TextView specialization = new TextView(this);
-
-                    specialization.setWidth((screenWidth * 20) / 100);
-
-                    specialization.setText(Specialization);
-
-                    //  devicename.setTextColor(Color.WHITE);
-                    specialization.setTextSize(13);
-                    specialization.setPadding(10, 0, 10, 0);
-
-
-                    tr.addView(specialization);
+                if(!type.equals("MedicalShops")) {
+                    Specialization = "Specialization : " + (String) jsonObject.get("specialization");
+                    textViewspecialization.setText(Specialization);
                 }
-                TextView address = new TextView(this);
-
-                address.setWidth((screenWidth*20)/100);
-
-                address.setText(Location);
-
-                //  devicename.setTextColor(Color.WHITE);
-                address.setTextSize(13);
-                address.setPadding(10,0,10,0);
 
 
-                tr.addView(address);
+                textViewname.setText(Name);
 
-                TextView distance = new TextView(this);
+                textViewaddress.setText(Location);
+                textViewdistance.setText("Distance : "+Double.toString(Distance)+" Km ");
 
-                distance.setWidth((screenWidth*20)/100);
+                     tr.addView(item);
 
-                distance.setText(Double.toString(Distance));
-
-                //  devicename.setTextColor(Color.WHITE);
-                distance.setTextSize(13);
-                distance.setPadding(10,0,10,0);
-
-
-                tr.addView(distance);
-
-                tr.setGravity(Gravity.CENTER);
+                tr.setBackgroundColor(Color.WHITE);
                 tr.setTag(Id);
                 tr.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -521,6 +495,8 @@ if(!type.equals("MedicalShops")){
                        DetailContent(view);
                     }
                 });
+
+
 
                 tablelayout.addView(tr,new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
 

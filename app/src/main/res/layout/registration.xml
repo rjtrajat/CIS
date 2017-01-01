@@ -56,6 +56,7 @@
             android:layout_height="match_parent"
             android:textColor="#13866f"
             android:maxLines="1"
+            android:id="@+id/register_name_edit_id"
             android:singleLine="true"
             />
     </LinearLayout>
@@ -83,6 +84,7 @@
             android:textColor="#13866f"
             android:maxLines="1"
             android:singleLine="true"
+            android:id="@+id/register_email_edit_id"
             />
     </LinearLayout>
     <LinearLayout
@@ -109,6 +111,7 @@
             android:textColor="#13866f"
             android:maxLines="1"
             android:singleLine="true"
+            android:id="@+id/register_mobile_edit_id"
             />
     </LinearLayout>
     <LinearLayout

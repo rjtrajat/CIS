@@ -442,7 +442,7 @@
         android:textColor="#169c81"
         android:layout_marginLeft="10sp"
         android:layout_marginRight="10sp"
-        android:layout_marginBottom="10sp"
+        android:layout_marginBottom="3sp"
         android:layout_gravity="center_horizontal"
         android:gravity="center_vertical|center_horizontal" />
     <ScrollView
@@ -456,8 +456,8 @@
             android:gravity="center_horizontal"
             android:id="@+id/tablelayout_id"
             android:layout_gravity="center_horizontal"
-            android:layout_marginLeft="10sp"
-            android:layout_marginRight="10sp"
+            android:layout_marginLeft="2sp"
+            android:layout_marginRight="2sp"
             android:background="#ffffff"
             android:textColor="#169c81"
             >

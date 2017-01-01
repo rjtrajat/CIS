@@ -1,5 +1,6 @@
 package com.cureissure.cis;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,12 +19,17 @@ import org.json.JSONObject;
 import java.util.Date;
 
 import static android.view.View.VISIBLE;
+import static com.cureissure.cis.APIsCall.context;
 
 /**
  * Created by RAJAT SINGH on 12/25/2016.
  */
 
 public class AppointmentDetail extends AppCompatActivity{
+
+    EditText editTextkeybutton;
+    public static android.support.v7.app.AlertDialog.Builder location_loading_builder;
+    public static android.support.v7.app.AlertDialog location_loading_alertDialog;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +63,17 @@ public class AppointmentDetail extends AppCompatActivity{
         TextView textView = (TextView) findViewById(R.id.detail_appointment_error_id);
         textView.setVisibility(View.INVISIBLE);
 
+         editTextkeybutton = (EditText)findViewById(R.id.appointment_detail_edittext_id);
+
+        location_loading_builder = new android.support.v7.app.AlertDialog.Builder(this);
+
+
     }
+    private void hideKeyboard(EditText editText) {
+        InputMethodManager keyboard = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        keyboard.hideSoftInputFromWindow(getWindow().getAttributes().token, 0);
+    }
+
     public void backtoMain(View view){
         ImageView image_back  =(ImageView) findViewById(R.id.Appointment_Detail_back_Title_Bar_Id);
         Animation in = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
@@ -68,15 +85,26 @@ public class AppointmentDetail extends AppCompatActivity{
     }
     public void check_button(View view){
 
+        hideKeyboard(editTextkeybutton);
+
+
         EditText editText = (EditText)findViewById(R.id.appointment_detail_edittext_id);
 
-        if(!editText.toString().equals("")){
+        String enteredPin = editText.getText().toString();
+        System.out.println("Entered pin is "+enteredPin);
+
+        if(!enteredPin.equals("")){
 
             System.out.println("Response is detail "+editText.getText().toString());
 
 
 APIsCall.detailScheduleAPI(editText.getText().toString());
-        APIsCall.context = this;
+        context = this;
+        }
+        else{
+            location_loading_builder.setMessage("Please Enter CIS Appointment No.");
+            location_loading_alertDialog =  location_loading_builder.create();
+            location_loading_alertDialog.show();
         }
     }
 
@@ -142,11 +170,11 @@ APIsCall.detailScheduleAPI(editText.getText().toString());
 
         if(appointmenttype.equals("DOCTOR")) {
             APIsCall.detailIndividualDoctorAppointAPI(appointmenttypekey);
-            APIsCall.context = this;
+            context = this;
         }
         else{
             APIsCall.detailIndividualHospitalAppointAPI(appointmenttypekey);
-            APIsCall.context = this;
+            context = this;
         }
     }
     catch (Exception e){

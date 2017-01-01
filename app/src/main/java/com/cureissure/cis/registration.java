@@ -9,9 +9,13 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static android.view.View.VISIBLE;
 
@@ -26,6 +30,8 @@ public class registration extends AppCompatActivity {
     public TextView location_textview;
     public TextView register_year_textview;
     public TextView register_month_textview;
+    public static android.support.v7.app.AlertDialog.Builder location_loading_builder;
+    public static android.support.v7.app.AlertDialog location_loading_alertDialog;
     @Override
     protected void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
@@ -145,6 +151,7 @@ public class registration extends AppCompatActivity {
 
             }
         });
+        location_loading_builder = new android.support.v7.app.AlertDialog.Builder(this);
 
     }
     public void backtoMain(View view){
@@ -161,5 +168,62 @@ public class registration extends AppCompatActivity {
         button_register.setBackgroundColor(Color.parseColor("#13866f"));
         button_register.setTextColor(Color.parseColor("#FFFFFF"));
 
+        String name;
+        String mail;
+        String contact;
+        String experience_year;
+        String experience_month;
+
+        EditText editText = (EditText)findViewById(R.id.register_name_edit_id);
+        name = editText.getText().toString();
+        editText = (EditText)findViewById(R.id.register_email_edit_id);
+        mail = editText.getText().toString();
+        editText = (EditText)findViewById(R.id.register_mobile_edit_id);
+        contact = editText.getText().toString();
+        TextView textView = (TextView)findViewById(R.id.register_year) ;
+        experience_year = textView.getText().toString();
+        textView = (TextView)findViewById(R.id.register_month) ;
+        experience_month = textView.getText().toString();
+
+
+        String msg = "Please Enter ";
+        if(name.equals("")||contact.equals("")||mail.equals("")||experience_year.equals("")||experience_month.equals("")) {
+
+            if (name.equals("")) {
+                msg = msg + "Name ";
+            }
+            if (contact.equals("")) {
+                msg = msg + "Contact ";
+            }
+            if (mail.equals("")) {
+                msg = msg + "Mail ";
+            }
+            if (experience_year.equals("") || experience_month.equals("")) {
+                msg = msg + "Experience ";
+            }
+
+            location_loading_builder.setMessage(msg);
+            location_loading_alertDialog = location_loading_builder.create();
+            location_loading_alertDialog.show();
+        }
+        else{
+            location_loading_builder.setMessage("Registered for verification , will contact soon");
+            location_loading_alertDialog =  location_loading_builder.create();
+            location_loading_alertDialog.setCanceledOnTouchOutside(false);
+            location_loading_alertDialog.show();
+
+            Timer timer = new Timer();
+
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    goToMainBack();
+                }
+            },3000);
+        }
+    }
+    public void goToMainBack(){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 }

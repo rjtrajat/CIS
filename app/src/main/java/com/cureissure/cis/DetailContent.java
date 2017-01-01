@@ -82,6 +82,11 @@ public class DetailContent extends AppCompatActivity {
         view.getLayoutParams().height=viewHeight;
         view.getLayoutParams().width=viewWidth;
 
+        view = findViewById(R.id.detail_content__parent_address_id);
+        viewHeight=(int)(screenHeight*7)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
 
         view = findViewById(R.id.detail_content__parent_name_id);
         viewHeight=(int)(screenHeight*7)/100;

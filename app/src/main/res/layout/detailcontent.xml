@@ -36,20 +36,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
         >
-        <RelativeLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_content__parent_name_id"
-
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Name : "
             android:textColor="#169c81"
-
+            android:layout_gravity="center_vertical"
+            android:textStyle="bold"
             android:layout_alignParentLeft="true" />
 
 
@@ -58,22 +62,32 @@
             android:layout_height="wrap_content"
             android:id="@+id/detail_content_name_id"
             android:textColor="#169c81"
-            android:text=""
-            android:layout_alignParentRight="true"
+            android:text="---"
+            android:layout_gravity="center_vertical"
 
             />
-        </RelativeLayout>
-        <RelativeLayout
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:id="@+id/detail_content__parent_about_id"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
+            >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="About : "
+            android:textStyle="bold"
             android:textColor="#169c81"
-
+            android:layout_gravity="center_vertical"
             android:layout_alignParentLeft="true" />
 
             <TextView
@@ -81,21 +95,30 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_content_about_id"
                 android:textColor="#169c81"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
-
-        <RelativeLayout
+                android:layout_gravity="center_vertical"
+                android:layout_alignParentRight="true"
+                android:text="---"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_content__parent_specialization_id"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Specialization : "
+                android:textStyle="bold"
                 android:textColor="#169c81"
-
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentLeft="true" />
 
             <TextView
@@ -103,20 +126,30 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_content_specialization_id"
                 android:textColor="#169c81"
+                android:text="---"
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <RelativeLayout
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_content__parent_experience_id"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Experience : "
+                android:textStyle="bold"
                 android:textColor="#169c81"
-
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentLeft="true" />
 
             <TextView
@@ -124,20 +157,30 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_content_experience_id"
                 android:textColor="#169c81"
+                android:text="---"
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <RelativeLayout
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_content__parent_mail_id"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mail Id : "
+                android:textStyle="bold"
                 android:textColor="#169c81"
-
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentLeft="true" />
 
             <TextView
@@ -145,20 +188,30 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_content_mail_id"
                 android:textColor="#169c81"
+                android:text="---"
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <RelativeLayout
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_content__parent_mobile_id"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mobile No. : "
+                android:textStyle="bold"
                 android:textColor="#169c81"
-
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentLeft="true" />
 
             <TextView
@@ -166,20 +219,30 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_content_mobile_id"
                 android:textColor="#169c81"
+                android:text="---"
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <RelativeLayout
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_content__parent_address_id"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Address : "
+                android:textStyle="bold"
                 android:textColor="#169c81"
-
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentLeft="true" />
 
             <TextView
@@ -187,8 +250,10 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_content_address_id"
                 android:textColor="#169c81"
+                android:text="---"
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentRight="true" />
-        </RelativeLayout>
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="wrap_content"

@@ -50,6 +50,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/appointment_detail_edittext_id"
             android:maxLines="1"
+            android:singleLine="true"
             />
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -86,19 +87,23 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:id="@+id/detail_appointment_complete_detail_id"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
         >
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_appointment__parent_uniquekeyappointment_id"
-
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="CIS Appointment No. : "
                 android:textColor="#169c81"
-
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentLeft="true" />
 
 
@@ -108,21 +113,31 @@
                 android:id="@+id/detail_appointment_uniquekeyappointment_id"
                 android:textColor="#169c81"
                 android:text=""
-                android:layout_alignParentRight="true"
+
+                android:layout_gravity="center_vertical"
 
                 />
-        </RelativeLayout>
-        <RelativeLayout
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:id="@+id/detail_appointment__parent_nameofpatient_id"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Patient Name : "
                 android:textColor="#169c81"
-
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentLeft="true" />
 
             <TextView
@@ -130,13 +145,20 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_appointment_nameofpatient_id"
                 android:textColor="#169c81"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
-
-        <RelativeLayout
+                android:text="---"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_appointment__parent_contactofpatient_id"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
 
             <TextView
@@ -144,7 +166,8 @@
                 android:layout_height="wrap_content"
                 android:text="Patient Contact : "
                 android:textColor="#169c81"
-
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentLeft="true" />
 
             <TextView
@@ -152,12 +175,20 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_appointment_contactofpatient_id"
                 android:textColor="#169c81"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <RelativeLayout
+                android:text="---"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_appointment__parent_mailidofpatient_id"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
 
             <TextView
@@ -165,7 +196,8 @@
                 android:layout_height="wrap_content"
                 android:text="Patient Mail : "
                 android:textColor="#169c81"
-
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentLeft="true" />
 
             <TextView
@@ -173,12 +205,20 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_appointment_mailidofpatient_id"
                 android:textColor="#169c81"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <RelativeLayout
+                android:text="---"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_appointment__parent_problemdescriptionofpatient_id"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
 
             <TextView
@@ -186,7 +226,8 @@
                 android:layout_height="wrap_content"
                 android:text="Description : "
                 android:textColor="#169c81"
-
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentLeft="true" />
 
             <TextView
@@ -194,12 +235,20 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_appointment_problemdescriptionofpatient_id"
                 android:textColor="#169c81"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <RelativeLayout
+                android:text="---"
+                android:layout_gravity="center_vertical"/>
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_appointment__parent_fulladdressofpatient_id"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
 
             <TextView
@@ -207,7 +256,8 @@
                 android:layout_height="wrap_content"
                 android:text="Patient Address : "
                 android:textColor="#169c81"
-
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentLeft="true" />
 
             <TextView
@@ -215,12 +265,20 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_appointment_fulladdressofpatient_id"
                 android:textColor="#169c81"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <RelativeLayout
+                android:text="---"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_appointment__parent_statusvalue_id"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
 
             <TextView
@@ -228,7 +286,8 @@
                 android:layout_height="wrap_content"
                 android:text="Appoinment Status : "
                 android:textColor="#169c81"
-
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentLeft="true" />
 
             <TextView
@@ -236,12 +295,20 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_appointment_statusvalue_id"
                 android:textColor="#169c81"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <RelativeLayout
+                android:text="---"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_appointment__parent_statusdatetime_id"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
 
             <TextView
@@ -249,7 +316,8 @@
                 android:layout_height="wrap_content"
                 android:text="Status Date: "
                 android:textColor="#169c81"
-
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentLeft="true" />
 
             <TextView
@@ -257,12 +325,20 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_appointment_statusdatetime_id"
                 android:textColor="#169c81"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <RelativeLayout
+                android:text="---"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_appointment__parent_timeanddateofappointment_id"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
 
             <TextView
@@ -270,7 +346,8 @@
                 android:layout_height="wrap_content"
                 android:text="Appointment Date: "
                 android:textColor="#169c81"
-
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentLeft="true" />
 
             <TextView
@@ -278,12 +355,20 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_appointment_timeanddateofappointment_id"
                 android:textColor="#169c81"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <RelativeLayout
+                android:text="---"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_appointment__parent_paid_id"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
 
             <TextView
@@ -291,7 +376,8 @@
                 android:layout_height="wrap_content"
                 android:text="Payment Detail :"
                 android:textColor="#169c81"
-
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
                 android:layout_alignParentLeft="true" />
 
             <TextView
@@ -299,19 +385,29 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_appointment_paid_id"
                 android:textColor="#169c81"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <RelativeLayout
+                android:text="---"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/detail_appointment__parent_dochos_name_id"
-        >
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
+            >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Payment Detail :"
             android:textColor="#169c81"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"
             android:id="@+id/detail_appointment_dochos_one_name_id"
             android:layout_alignParentLeft="true" />
 
@@ -320,13 +416,20 @@
             android:layout_height="wrap_content"
             android:id="@+id/detail_appointment_dochos_name_id"
             android:textColor="#169c81"
-            android:layout_alignParentRight="true" />
-    </RelativeLayout>
-
-        <RelativeLayout
+            android:text="---"
+            android:layout_gravity="center_vertical" />
+    </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_appointment__parent_dochos_specialization_id"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
 
             <TextView
@@ -334,6 +437,8 @@
                 android:layout_height="wrap_content"
                 android:text="Payment Detail :"
                 android:textColor="#169c81"
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
                 android:id="@+id/detail_appointment_dochos_one_specialization_id"
                 android:layout_alignParentLeft="true" />
 
@@ -342,18 +447,28 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_appointment_dochos_specialization_id"
                 android:textColor="#169c81"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <RelativeLayout
+                android:text="---"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_appointment__parent_dochos_experience_id"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Payment Detail :"
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
                 android:textColor="#169c81"
                 android:id="@+id/detail_appointment_dochos_one_experience_id"
                 android:layout_alignParentLeft="true" />
@@ -363,12 +478,20 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_appointment_dochos_experience_id"
                 android:textColor="#169c81"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <RelativeLayout
+                android:text="---"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_appointment__parent_dochos_contact_id"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
 
             <TextView
@@ -376,6 +499,8 @@
                 android:layout_height="wrap_content"
                 android:text="Payment Detail :"
                 android:textColor="#169c81"
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
                 android:id="@+id/detail_appointment_dochos_one_contact_id"
                 android:layout_alignParentLeft="true" />
 
@@ -384,12 +509,20 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_appointment_dochos_contact_id"
                 android:textColor="#169c81"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <RelativeLayout
+                android:text="---"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_appointment__parent_dochos_mail_id"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
 
             <TextView
@@ -397,6 +530,8 @@
                 android:layout_height="wrap_content"
                 android:text="Payment Detail :"
                 android:textColor="#169c81"
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
                 android:id="@+id/detail_appointment_dochos_one_mail_id"
                 android:layout_alignParentLeft="true" />
 
@@ -405,12 +540,20 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_appointment_dochos_mail_id"
                 android:textColor="#169c81"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <RelativeLayout
+                android:text="---"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_appointment__parent_dochos_about_id"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
 
             <TextView
@@ -418,6 +561,8 @@
                 android:layout_height="wrap_content"
                 android:text="Payment Detail :"
                 android:textColor="#169c81"
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
                 android:id="@+id/detail_appointment_dochos_one_about_id"
                 android:layout_alignParentLeft="true" />
 
@@ -426,12 +571,20 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_appointment_dochos_about_id"
                 android:textColor="#169c81"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
-        <RelativeLayout
+                android:text="---"
+                android:layout_gravity="center_vertical" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1sp"
+            android:background="#169c81"
+            />
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_appointment__parent_dochos_fulladdress_id"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
             >
 
             <TextView
@@ -439,6 +592,8 @@
                 android:layout_height="wrap_content"
                 android:text="Payment Detail :"
                 android:textColor="#169c81"
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical"
                 android:id="@+id/detail_appointment_dochos_one_fulladdress_id"
                 android:layout_alignParentLeft="true" />
 
@@ -447,7 +602,9 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/detail_appointment_dochos_fulladdress_id"
                 android:textColor="#169c81"
-                android:layout_alignParentRight="true" />
-        </RelativeLayout>
+                android:text="---"
+                android:layout_gravity="center_vertical"
+              />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
