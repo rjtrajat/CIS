@@ -47,7 +47,7 @@
             android:id="@+id/register_name_id"
             android:text="Doctor Name :"
             android:textColor="#13866f"
-
+            android:textStyle="bold"
             android:textSize="20sp"
 
             />
@@ -74,7 +74,7 @@
             android:id="@+id/register_email_id"
             android:text="Email Id :"
             android:textColor="#13866f"
-
+            android:textStyle="bold"
             android:textSize="20sp"
 
             />
@@ -101,7 +101,7 @@
             android:id="@+id/register_mobile_id"
             android:text="Mobile :"
             android:textColor="#13866f"
-
+            android:textStyle="bold"
             android:textSize="20sp"
 
             />
@@ -128,7 +128,7 @@
             android:id="@+id/register_experience_id"
             android:text="Experience :"
             android:textColor="#13866f"
-
+            android:textStyle="bold"
             android:textSize="20sp"
 
             />
@@ -206,7 +206,7 @@
             android:id="@+id/register_location_id"
             android:text="Location :"
             android:textColor="#13866f"
-
+            android:textStyle="bold"
             android:textSize="20sp"
 
             />
@@ -231,7 +231,8 @@
 
             android:id="@+id/Button_register_Bar"
             android:text="Register"
-
+            android:paddingLeft="6sp"
+            android:paddingRight="6sp"
             android:onClick="register_button"
             android:background="@drawable/roundedbutton"
 

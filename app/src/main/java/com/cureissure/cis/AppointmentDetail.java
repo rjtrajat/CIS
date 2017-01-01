@@ -58,6 +58,132 @@ public class AppointmentDetail extends AppCompatActivity{
       //  view.getLayoutParams().height = viewHeight;
         view.getLayoutParams().width = viewWidth;
 
+
+        view = findViewById(R.id.detail_appointment__parent_uniquekeyappointment_id);
+        viewHeight=(int)(screenHeight*5)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+
+        view = findViewById(R.id.detail_appointment__parent_nameofpatient_id);
+        viewHeight=(int)(screenHeight*5)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+
+        view = findViewById(R.id.detail_appointment__parent_contactofpatient_id);
+        viewHeight=(int)(screenHeight*5)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+
+        view = findViewById(R.id.detail_appointment__parent_mailidofpatient_id);
+        viewHeight=(int)(screenHeight*5)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+        view = findViewById(R.id.detail_appointment__parent_problemdescriptionofpatient_id);
+        viewHeight=(int)(screenHeight*5)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+
+        view = findViewById(R.id.detail_appointment__parent_fulladdressofpatient_id);
+        viewHeight=(int)(screenHeight*5)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+
+        view = findViewById(R.id.detail_appointment__parent_statusvalue_id);
+        viewHeight=(int)(screenHeight*5)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+
+        view = findViewById(R.id.detail_appointment__parent_statusdatetime_id);
+        viewHeight=(int)(screenHeight*5)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+
+        view = findViewById(R.id.detail_appointment__parent_timeanddateofappointment_id);
+        viewHeight=(int)(screenHeight*5)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+
+        view = findViewById(R.id.detail_appointment__parent_paid_id);
+        viewHeight=(int)(screenHeight*5)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+
+        view = findViewById(R.id.detail_appointment__parent_dochos_name_id);
+        viewHeight=(int)(screenHeight*5)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+
+        view = findViewById(R.id.detail_appointment__parent_dochos_specialization_id);
+        viewHeight=(int)(screenHeight*5)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+
+        view = findViewById(R.id.detail_appointment__parent_dochos_experience_id);
+        viewHeight=(int)(screenHeight*5)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+
+        view = findViewById(R.id.detail_appointment__parent_dochos_contact_id);
+        viewHeight=(int)(screenHeight*5)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+
+        view = findViewById(R.id.detail_appointment__parent_dochos_mail_id);
+        viewHeight=(int)(screenHeight*5)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+
+        view = findViewById(R.id.detail_appointment__parent_dochos_about_id);
+        viewHeight=(int)(screenHeight*5)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+
+        view = findViewById(R.id.detail_appointment__parent_dochos_fulladdress_id);
+        viewHeight=(int)(screenHeight*5)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+
+
+
+        viewHeight=(int)(screenHeight*11)/100;
+        view = findViewById(R.id.appointmet_detail_submit_register_id);
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.detail_appointment_complete_detail_id);
         linearLayout.setVisibility(View.INVISIBLE);
         TextView textView = (TextView) findViewById(R.id.detail_appointment_error_id);

@@ -165,8 +165,8 @@ public class registration extends AppCompatActivity {
     }
     public void register_button(View view){
         Button button_register = (Button)findViewById(R.id.Button_register_Bar);
-        button_register.setBackgroundColor(Color.parseColor("#13866f"));
-        button_register.setTextColor(Color.parseColor("#FFFFFF"));
+//        button_register.setBackgroundColor(Color.parseColor("#13866f"));
+//        button_register.setTextColor(Color.parseColor("#FFFFFF"));
 
         String name;
         String mail;

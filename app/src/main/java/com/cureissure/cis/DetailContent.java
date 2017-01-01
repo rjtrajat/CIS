@@ -11,6 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -100,6 +101,12 @@ public class DetailContent extends AppCompatActivity {
         viewWidth = (int)(screenWidth*100)/100;
         view.getLayoutParams().height=viewHeight;
         view.getLayoutParams().width=viewWidth;
+
+
+        viewHeight=(int)(screenHeight*11)/100;
+        view = findViewById(R.id.detail_content_submit_schedule_id);
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
     }
 
     @Override
@@ -122,6 +129,8 @@ public class DetailContent extends AppCompatActivity {
         {
             APIsCall.detailIndividualMedicalShopAPI(MainActivity.clicked_id);
             detailtitle.setText("Medical Shop Detail");
+            Button button_register = (Button)findViewById(R.id.Button_schedule_Bar);
+            button_register.setText("Order Medicine");
         }
         else if(MainActivity.clicked_id.contains("CIS_TEST"))
         {
@@ -227,12 +236,14 @@ System.out.println("Response is detail content "+jsonObject);
             }
 
             if(MainActivity.clicked_id.contains("CIS_MED")){
-                RelativeLayout relativeLayout = (RelativeLayout)findViewById(R.id.detail_content__parent_about_id);
-                relativeLayout.removeAllViews();
-                 relativeLayout = (RelativeLayout)findViewById(R.id.detail_content__parent_experience_id);
-                relativeLayout.removeAllViews();
-                relativeLayout = (RelativeLayout)findViewById(R.id.detail_content__parent_specialization_id);
-                relativeLayout.removeAllViews();
+//                LinearLayout linearLayout = (LinearLayout)findViewById(R.id.detail_content__parent_about_id);
+//                linearLayout.removeAllViews();
+//                linearLayout = (LinearLayout)findViewById(R.id.detail_content__parent_experience_id);
+//                linearLayout.removeAllViews();
+//                linearLayout = (LinearLayout)findViewById(R.id.detail_content__parent_specialization_id);
+//                linearLayout.removeAllViews();
+
+
             }
 
         }
@@ -241,9 +252,9 @@ System.out.println("Response is detail content "+jsonObject);
         }
     }
     public void schedule_button(View view){
-        Button button_register = (Button)findViewById(R.id.Button_schedule_Bar);
-        button_register.setBackgroundColor(Color.parseColor("#13866f"));
-        button_register.setTextColor(Color.parseColor("#FFFFFF"));
+//        Button button_register = (Button)findViewById(R.id.Button_schedule_Bar);
+//        button_register.setBackgroundColor(Color.parseColor("#13866f"));
+//        button_register.setTextColor(Color.parseColor("#FFFFFF"));
         Intent intent = new Intent(this,Schedule_page.class);
         startActivity(intent);
     }

@@ -39,8 +39,8 @@ public class Schedule_page extends AppCompatActivity{
 
     public static android.support.v7.app.AlertDialog.Builder location_loading_builder;
     public static android.support.v7.app.AlertDialog location_loading_alertDialog;
-    ImageView imageDatepicker ;
-    ImageView imageTimepicker;
+    TextView imageDatepicker ;
+    TextView imageTimepicker;
     TextView txtDate, txtTime;
 
     public String MailPatient;
@@ -104,8 +104,8 @@ public class Schedule_page extends AppCompatActivity{
         view.getLayoutParams().height=viewHeight;
         view.getLayoutParams().width=viewWidth;
 
-        imageDatepicker = (ImageView)findViewById(R.id.schedule_date_image_id);
-        imageTimepicker = (ImageView)findViewById(R.id.schedule_time_image_id);
+        imageDatepicker = (TextView) findViewById(R.id.schedule_date_image_id);
+        imageTimepicker = (TextView) findViewById(R.id.schedule_time_image_id);
 
         txtDate = (TextView)findViewById(R.id.schedule_date_value_image_id);
         txtTime  = (TextView)findViewById(R.id.schedule_time_value_image_id);
