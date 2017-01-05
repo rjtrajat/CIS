@@ -429,6 +429,8 @@ public class MainActivity extends AppCompatActivity {
         TableLayout tablelayout = (TableLayout)findViewById(R.id.tablelayout_id);
         tablelayout.removeAllViews();
 
+        if(len==0)
+        view.setText("No CIS Registered "+type+"found nearby");
         while(len>i){
             try {
                 jsonObject = response.getJSONObject(i);

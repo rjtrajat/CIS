@@ -1,8 +1,11 @@
 package com.cureissure.cis;
 
+import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.SmsManager;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.Animation;
@@ -46,6 +49,24 @@ public class Schedule_page extends AppCompatActivity{
     public String MailPatient;
     public String ContactPatient;
     private int mYear, mMonth, mDay, mHour, mMinute;
+
+    String uniquekeyappointmentGlobal ;
+    String nameofpatientGlobal ;
+    String contactofpatientGlobal ;
+    String mailidofpatientGlobal;
+    Double longitudeofpatientGlobal;
+    Double latitudeofpatientGlobal;
+    String problemdescriptionofpatientGlobal;
+    String fulladdressofpatientGlobal;
+    String statusvalueGlobal;
+    String statusdatetimeGlobal;
+    String dateofappointmentGlobal;
+    String timeofappointmentGlobal;
+    Boolean paidGlobal;
+    String appointmenttypeGlobal;
+    String appointmenttypekeyGlobal;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,6 +133,9 @@ public class Schedule_page extends AppCompatActivity{
 
         location_loading_builder = new android.support.v7.app.AlertDialog.Builder(this);
         location_loading_alertDialog =  location_loading_builder.create();
+
+
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.SEND_SMS},1);
 
     }
     public void backtoDetailContent(View view){
@@ -183,6 +207,23 @@ try {
     }
     appointmenttypekey = MainActivity.clicked_id;
 
+
+
+     uniquekeyappointmentGlobal = uniquekeyappointment;
+     nameofpatientGlobal =  nameofpatient;
+     contactofpatientGlobal = contactofpatient;
+     mailidofpatientGlobal = mailidofpatient;
+     longitudeofpatientGlobal = longitudeofpatient;
+     latitudeofpatientGlobal = latitudeofpatient;
+     problemdescriptionofpatientGlobal = problemdescriptionofpatient;
+     fulladdressofpatientGlobal = fulladdressofpatient;
+     statusvalueGlobal = statusvalue;
+     statusdatetimeGlobal = statusdatetime;
+     dateofappointmentGlobal = dateofappointment;
+     timeofappointmentGlobal = timeofappointment;
+     paidGlobal = paid;
+     appointmenttypeGlobal = appointmenttype;
+     appointmenttypekeyGlobal = appointmenttypekey;
 
 
     if(nameofpatient.equals("")||contactofpatient.equals("")||problemdescriptionofpatient.equals("")||dateofappointment.equals("")||timeofappointment.equals(""))
@@ -265,10 +306,33 @@ catch (Exception e){
 
     public void goToMain(){
 
+//
+//        try {
+//            SmsManager smsManager = SmsManager.getDefault();
+//            smsManager.sendTextMessage("8653769197", null,"message from cis", null, null);
+////            Toast.makeText(getApplicationContext(), "Message Sent",
+////                    Toast.LENGTH_LONG).show();
+//        } catch (Exception ex) {
+////            Toast.makeText(getApplicationContext(),ex.getMessage().toString(),
+////                    Toast.LENGTH_LONG).show();
+//            ex.printStackTrace();
+//        }
+
+//
+//        try {
+//            GMailSender sender = new GMailSender("rjtrajatsingh2016@gmail.com", "kunDAN1!7417kunDAN2@");
+//            sender.sendMail("This is Subject",
+//                    "This is Body",
+//                    "rjtrajatsingh2016@gmail.com",
+//                    "rajatsingh5111993@gmail.com");
+//        } catch (Exception e) {
+//           System.out.println("Error is "+e);
+//        }
+//        System.out.println("Response is msg shown");
 
 
+        APIsCall.sendMailPatient(uniquekeyappointmentGlobal,nameofpatientGlobal,contactofpatientGlobal,mailidofpatientGlobal,problemdescriptionofpatientGlobal,fulladdressofpatientGlobal,statusvalueGlobal,dateofappointmentGlobal,timeofappointmentGlobal,appointmenttypeGlobal,appointmenttypekeyGlobal);
 
-        System.out.println("Response is msg shown");
 
         location_loading_builder.setMessage("Appointment Scheduled");
         location_loading_alertDialog =  location_loading_builder.create();

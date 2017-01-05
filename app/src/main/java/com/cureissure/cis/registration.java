@@ -207,6 +207,10 @@ public class registration extends AppCompatActivity {
             location_loading_alertDialog.show();
         }
         else{
+
+
+            APIsCall.sendMailDocHosTestMed(name,mail,contact,experience_month,experience_year);
+
             location_loading_builder.setMessage("Registered for verification , will contact soon");
             location_loading_alertDialog =  location_loading_builder.create();
             location_loading_alertDialog.setCanceledOnTouchOutside(false);

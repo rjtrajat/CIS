@@ -409,4 +409,82 @@ public class APIsCall {
 
     }
 
+    public static void sendMailDocHosTestMed(String name,String mail,String contact,String experience_month,String experience_year){
+        RequestParams rp = new RequestParams();
+        rp.put("name", name);
+        rp.put("mail", mail);
+        rp.put("contact", contact);
+        rp.put("experience_month", experience_month);
+        rp.put("experience_year", experience_year);
+
+
+        HttpUtils.get("MailDocHosTestMed", rp, new JsonHttpResponseHandler() {
+
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                // If the response is JSONObject instead of expected JSONArray
+                Log.d("asd", "---------------- this is response : " + response);
+                System.out.println("Response is json detail " + response);
+                try {
+                    JSONObject serverResp = new JSONObject(response.toString());
+//                    Schedule_page schedule_page = (Schedule_page) context;
+//                    schedule_page.goToMain();
+
+
+
+                } catch (JSONException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+
+
+
+        });
+
+    }
+
+    public static void sendMailPatient(String uniquekeyappointmentGlobal,String nameofpatientGlobal,String contactofpatientGlobal,String mailidofpatientGlobal,String problemdescriptionofpatientGlobal,String fulladdressofpatientGlobal,String statusvalueGlobal,String dateofappointmentGlobal,String timeofappointmentGlobal,String appointmenttypeGlobal,String appointmenttypekeyGlobal)
+    {
+        RequestParams rp = new RequestParams();
+        rp.put("uniquekeyappointmentGlobal", uniquekeyappointmentGlobal);
+        rp.put("nameofpatientGlobal", nameofpatientGlobal);
+        rp.put("contactofpatientGlobal", contactofpatientGlobal);
+        rp.put("mailidofpatientGlobal", mailidofpatientGlobal);
+        rp.put("problemdescriptionofpatientGlobal", problemdescriptionofpatientGlobal);
+        rp.put("fulladdressofpatientGlobal", fulladdressofpatientGlobal);
+        rp.put("statusvalueGlobal", statusvalueGlobal);
+        rp.put("dateofappointmentGlobal", dateofappointmentGlobal);
+        rp.put("timeofappointmentGlobal", timeofappointmentGlobal);
+        rp.put("appointmenttypeGlobal", appointmenttypeGlobal);
+        rp.put("appointmenttypekeyGlobal", appointmenttypekeyGlobal);
+
+        HttpUtils.get("MailPatient", rp, new JsonHttpResponseHandler() {
+
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                // If the response is JSONObject instead of expected JSONArray
+                Log.d("asd", "---------------- this is response : " + response);
+                System.out.println("Response is json detail " + response);
+                try {
+                    JSONObject serverResp = new JSONObject(response.toString());
+//                    Schedule_page schedule_page = (Schedule_page) context;
+//                    schedule_page.goToMain();
+
+
+
+                } catch (JSONException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+
+
+
+        });
+
+    }
+
 }
