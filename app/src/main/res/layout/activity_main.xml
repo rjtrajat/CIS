@@ -14,40 +14,40 @@
         <!--android:id="@+id/checkloading_id"-->
         <!--&gt;</RelativeLayout>-->
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/MainActivity_TitleBar"
-    android:background="#13866f"
-    android:paddingLeft="10sp"
-    android:paddingRight="10sp"
-    >
-
-    <ImageView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/menu"
-        android:layout_centerVertical="true"
-        android:id="@+id/Menu_Title_Bar_Id"
-        android:onClick="Menu_Title_Bar"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:id="@+id/Button_Title_Bar"
-        android:text="HOSPITALS"
-        android:onClick="Button_On_Title_Bar"
+        android:id="@+id/MainActivity_TitleBar"
+        android:background="#13866f"
+        android:paddingLeft="10sp"
+        android:paddingRight="10sp"
+        >
 
-        android:background="@drawable/roundedbutton"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/menu"
+            android:layout_centerVertical="true"
+            android:id="@+id/Menu_Title_Bar_Id"
+            android:onClick="Menu_Title_Bar"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:id="@+id/Button_Title_Bar"
+            android:text="HOSPITALS"
+            android:onClick="Button_On_Title_Bar"
 
-        android:layout_centerVertical="true"
-        android:textColor="#13866f" />
+            android:background="@drawable/roundedbutton"
+
+            android:layout_centerVertical="true"
+            android:textColor="#13866f" />
 
 
-</RelativeLayout>
+    </RelativeLayout>
 
-<LinearLayout
+    <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
