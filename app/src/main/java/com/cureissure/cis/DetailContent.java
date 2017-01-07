@@ -26,6 +26,17 @@ import static android.view.View.VISIBLE;
 
 public class DetailContent extends AppCompatActivity {
 
+
+    public static android.support.v7.app.AlertDialog.Builder location_loading_builder;
+    public static android.support.v7.app.AlertDialog location_loading_alertDialog;
+    static  String   DocHosTestNameGlobal = "";
+    static String  DocHosTestAboutGlobal = "" ;
+    static String  DocHosTestSpecializationGlobal = "";
+    static String  DocHosTestExperienceGlobal = "";
+    static String  DocHosTestMail_idGlobal = "";
+    static String  DocHosTestMobile_NoGlobal = "";
+    static String  DocHosTestAddressGlobal = "";
+
     TextView detailtitle ;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -115,9 +126,19 @@ public class DetailContent extends AppCompatActivity {
 
         detailtitle = (TextView)findViewById(R.id.detail_content_text_title_bar_id);
 
+        location_loading_builder = new android.support.v7.app.AlertDialog.Builder(this);
+        location_loading_builder.setMessage("Loading Detail , please wait");
+        location_loading_alertDialog =  location_loading_builder.create();
+        location_loading_alertDialog.setCanceledOnTouchOutside(false);
+
+        location_loading_alertDialog.show();
+        Button button_register = (Button)findViewById(R.id.Button_schedule_Bar);
+        button_register.setVisibility(View.INVISIBLE);
 
 
        if(MainActivity.clicked_id.contains("CIS_DOC")) {
+
+
             APIsCall.detailIndividualDoctorAPI(MainActivity.clicked_id);
             detailtitle.setText("Doctor Detail");
         }
@@ -129,7 +150,7 @@ public class DetailContent extends AppCompatActivity {
         {
             APIsCall.detailIndividualMedicalShopAPI(MainActivity.clicked_id);
             detailtitle.setText("Medical Shop Detail");
-            Button button_register = (Button)findViewById(R.id.Button_schedule_Bar);
+             button_register = (Button)findViewById(R.id.Button_schedule_Bar);
             button_register.setText("Order Medicine");
         }
         else if(MainActivity.clicked_id.contains("CIS_TEST"))
@@ -151,7 +172,9 @@ public class DetailContent extends AppCompatActivity {
     }
     public void DetailDesign(JSONObject jsonObject){
 System.out.println("Response is detail content "+jsonObject);
-
+        location_loading_alertDialog.dismiss();
+        Button button_register = (Button)findViewById(R.id.Button_schedule_Bar);
+        button_register.setVisibility(View.VISIBLE);
         String Name = "";
         String About = "" ;
         String Specialization = "";
@@ -235,6 +258,16 @@ System.out.println("Response is detail content "+jsonObject);
                 textView.setText(Specialization);
             }
 
+
+
+             DocHosTestNameGlobal = Name;
+             DocHosTestAboutGlobal = About ;
+             DocHosTestSpecializationGlobal = Specialization;
+             DocHosTestExperienceGlobal = Experience;
+            DocHosTestMail_idGlobal = Mail_id;
+             DocHosTestMobile_NoGlobal = Mobile_No;
+            DocHosTestAddressGlobal = Address;
+
             if(MainActivity.clicked_id.contains("CIS_MED")){
 //                LinearLayout linearLayout = (LinearLayout)findViewById(R.id.detail_content__parent_about_id);
 //                linearLayout.removeAllViews();
@@ -255,8 +288,20 @@ System.out.println("Response is detail content "+jsonObject);
 //        Button button_register = (Button)findViewById(R.id.Button_schedule_Bar);
 //        button_register.setBackgroundColor(Color.parseColor("#13866f"));
 //        button_register.setTextColor(Color.parseColor("#FFFFFF"));
-        Intent intent = new Intent(this,Schedule_page.class);
-        startActivity(intent);
+
+
+        if(MainActivity.clicked_id.contains("CIS_MED"))
+        {
+            location_loading_builder = new android.support.v7.app.AlertDialog.Builder(this);
+            location_loading_builder.setMessage("This service not available , coming soon");
+            location_loading_alertDialog =  location_loading_builder.create();
+            location_loading_alertDialog.show();
+        }
+        else {
+
+            Intent intent = new Intent(this, Schedule_page.class);
+            startActivity(intent);
+        }
     }
 
 }

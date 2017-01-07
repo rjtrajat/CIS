@@ -222,7 +222,10 @@ public class AppointmentDetail extends AppCompatActivity{
         if(!enteredPin.equals("")){
 
             System.out.println("Response is detail "+editText.getText().toString());
-
+            location_loading_builder.setMessage("Loading Appointment Detail");
+            location_loading_alertDialog =  location_loading_builder.create();
+            location_loading_alertDialog.setCanceledOnTouchOutside(false);
+            location_loading_alertDialog.show();
 
 APIsCall.detailScheduleAPI(editText.getText().toString());
         context = this;
@@ -235,6 +238,9 @@ APIsCall.detailScheduleAPI(editText.getText().toString());
     }
 
     public void detailDesign(JSONObject jsonObject){
+
+
+        location_loading_alertDialog.dismiss();
 
         System.out.println("Response is coming "+jsonObject);
 
@@ -298,8 +304,12 @@ APIsCall.detailScheduleAPI(editText.getText().toString());
             APIsCall.detailIndividualDoctorAppointAPI(appointmenttypekey);
             context = this;
         }
-        else{
+        else if(appointmenttype.equals("HOSPITAL")){
             APIsCall.detailIndividualHospitalAppointAPI(appointmenttypekey);
+            context = this;
+        }
+        else{
+            APIsCall.detailIndividualTestCenterAppointAPI(appointmenttypekey);
             context = this;
         }
     }
@@ -310,6 +320,8 @@ APIsCall.detailScheduleAPI(editText.getText().toString());
     }
 
     public void updateDoctorAppointed(JSONObject jsonObject){
+
+        location_loading_alertDialog.dismiss();
 
         System.out.println("Response is coming individual");
      //   String cisdocid;
@@ -367,6 +379,9 @@ APIsCall.detailScheduleAPI(editText.getText().toString());
 
     }
     public void updateHospitalAppointed(JSONObject jsonObject){
+
+        location_loading_alertDialog.dismiss();
+
      //   String cishosid;
       //  double longitude;
       //   double latitude;
@@ -423,7 +438,70 @@ APIsCall.detailScheduleAPI(editText.getText().toString());
         }
     }
 
+    public void updateTestCenterAppointed(JSONObject jsonObject){
+
+        location_loading_alertDialog.dismiss();
+
+        //   String cishosid;
+        //  double longitude;
+        //   double latitude;
+        String fulladdress;
+        String abouthospital ;
+        String mailid ;
+        String contact;
+        String established ;
+        String specialization;
+        String hospitalname;
+        try{
+            //   cishosid = (String) jsonObject.get("cishosid");
+            fulladdress= (String) jsonObject.get("fulladdress");
+            abouthospital = (String) jsonObject.get("abouttestcenter");
+            mailid= (String) jsonObject.get("mailid");
+            contact = (String) jsonObject.get("contact");
+            established= (String) jsonObject.get("established");
+            specialization = (String) jsonObject.get("specialization");
+            hospitalname= (String) jsonObject.get("testcentername");
+
+            TextView textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_name_id);
+            textView.setText("Test Center Name :");
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_name_id);
+            textView.setText(hospitalname);
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_specialization_id);
+            textView.setText("Specialization : " );
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_specialization_id);
+            textView.setText(specialization);
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_experience_id);
+            textView.setText("Established : " );
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_experience_id);
+            textView.setText(established.toString());
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_contact_id);
+            textView.setText("Contact : " );
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_contact_id);
+            textView.setText(contact);
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_mail_id);
+            textView.setText("Mail Id : " );
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_mail_id);
+            textView.setText(mailid);
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_about_id);
+            textView.setText("About Test Center : " );
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_about_id);
+            textView.setText(abouthospital);
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_one_fulladdress_id);
+            textView.setText("Address : " );
+            textView = (TextView)findViewById(R.id.detail_appointment_dochos_fulladdress_id);
+            textView.setText(fulladdress);
+
+
+        }
+        catch (Exception e){
+
+        }
+    }
+
     public void notFoundId(){
+
+        location_loading_alertDialog.dismiss();
+
         TextView textView = (TextView) findViewById(R.id.detail_appointment_error_id);
         textView.setVisibility(View.VISIBLE);
     }

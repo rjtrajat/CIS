@@ -333,6 +333,38 @@ public class APIsCall {
         });
     }
 
+    public static void detailIndividualTestCenterAppointAPI(String Id) {
+
+        RequestParams rp = new RequestParams();
+
+        rp.put("cis_test_id", Id);
+
+
+        HttpUtils.get("detailIndividualTestCenterAppoint", rp, new JsonHttpResponseHandler() {
+
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                // If the response is JSONObject instead of expected JSONArray
+                Log.d("asd", "---------------- this is response : " + response);
+                System.out.println("Response is json detail " + response);
+                try {
+                    JSONObject serverResp = new JSONObject(response.toString());
+                    AppointmentDetail appointmentDetail = (AppointmentDetail) context;
+                    appointmentDetail.updateTestCenterAppointed(response);
+                } catch (JSONException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+
+
+
+        });
+    }
+
+
+
     public static void getLatestUniquePatientKey(){
 
         RequestParams rp = new RequestParams();
@@ -381,6 +413,8 @@ public class APIsCall {
         rp.put("paid", paid);
         rp.put("appointmenttype", appointmenttype);
         rp.put("appointmenttypekey", appointmenttypekey);
+
+
 
         HttpUtils.get("patientDetailentry", rp, new JsonHttpResponseHandler() {
 
@@ -445,7 +479,7 @@ public class APIsCall {
 
     }
 
-    public static void sendMailPatient(String uniquekeyappointmentGlobal,String nameofpatientGlobal,String contactofpatientGlobal,String mailidofpatientGlobal,String problemdescriptionofpatientGlobal,String fulladdressofpatientGlobal,String statusvalueGlobal,String dateofappointmentGlobal,String timeofappointmentGlobal,String appointmenttypeGlobal,String appointmenttypekeyGlobal)
+    public static void sendMailPatient(String uniquekeyappointmentGlobal,String nameofpatientGlobal,String contactofpatientGlobal,String mailidofpatientGlobal,String problemdescriptionofpatientGlobal,String fulladdressofpatientGlobal,String statusvalueGlobal,String dateofappointmentGlobal,String timeofappointmentGlobal,String appointmenttypeGlobal,String appointmenttypekeyGlobal,String DocHosTestNameGlobal,String DocHosTestAboutGlobal,String DocHosTestAddressGlobal,String DocHosTestExperienceGlobal,String DocHosTestMail_idGlobal,String DocHosTestMobile_NoGlobal,String DocHosTestSpecializationGlobal)
     {
         RequestParams rp = new RequestParams();
         rp.put("uniquekeyappointmentGlobal", uniquekeyappointmentGlobal);
@@ -459,6 +493,15 @@ public class APIsCall {
         rp.put("timeofappointmentGlobal", timeofappointmentGlobal);
         rp.put("appointmenttypeGlobal", appointmenttypeGlobal);
         rp.put("appointmenttypekeyGlobal", appointmenttypekeyGlobal);
+
+
+        rp.put("DocHosTestNameGlobal", DocHosTestNameGlobal);
+        rp.put("DocHosTestAboutGlobal", DocHosTestAboutGlobal);
+        rp.put("DocHosTestAddressGlobal", DocHosTestAddressGlobal);
+        rp.put("DocHosTestExperienceGlobal", DocHosTestExperienceGlobal);
+        rp.put("DocHosTestMail_idGlobal", DocHosTestMail_idGlobal);
+        rp.put("DocHosTestMobile_NoGlobal", DocHosTestMobile_NoGlobal);
+        rp.put("DocHosTestSpecializationGlobal", DocHosTestSpecializationGlobal);
 
         HttpUtils.get("MailPatient", rp, new JsonHttpResponseHandler() {
 

@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         view = findViewById(R.id.screen_half_id);
-        viewHeight=(int)(screenHeight*90)/100;
+        viewHeight=(int)(screenHeight*86.5)/100;
         viewWidth = (int)(screenWidth*100)/100;
         view.getLayoutParams().height=viewHeight;
         view.getLayoutParams().width=viewWidth;
@@ -139,6 +139,8 @@ public class MainActivity extends AppCompatActivity {
 
         //This is done for marshmallow
 
+        context = this;
+
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.M && WifiGPS.gps_access_granted==false){
             builder = new android.support.v7.app.AlertDialog.Builder(this);
             builder.setTitle("This app needs location access");
@@ -152,6 +154,9 @@ public class MainActivity extends AppCompatActivity {
                     System.out.println("value is "+WifiGPS.gps_access_granted);
                        location_loading_alertDialog.show();
                     check_for_geo = true;
+
+
+                    //context = this;
                 }
 
             });
@@ -235,6 +240,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     void MedicalShopClick(View view){
+        location_loading_builder = new android.support.v7.app.AlertDialog.Builder(this);
+        location_loading_builder.setMessage("Loading , please wait");
+        location_loading_alertDialog =  location_loading_builder.create();
+        location_loading_alertDialog.setCanceledOnTouchOutside(false);
+        location_loading_alertDialog.show();
 
         if(visible==true) {
             collapse(mDrawerLayout,screen_half,false);
@@ -245,6 +255,12 @@ public class MainActivity extends AppCompatActivity {
         context = this;
     }
     void TestCenterClick(View view){
+
+        location_loading_builder = new android.support.v7.app.AlertDialog.Builder(this);
+        location_loading_builder.setMessage("Loading , please wait");
+        location_loading_alertDialog =  location_loading_builder.create();
+        location_loading_alertDialog.setCanceledOnTouchOutside(false);
+        location_loading_alertDialog.show();
 
         if(visible==true) {
             collapse(mDrawerLayout,screen_half,false);
@@ -273,6 +289,13 @@ public class MainActivity extends AppCompatActivity {
         button_title.startAnimation(in);
         button_title.setVisibility(VISIBLE);
         String text_button_title = (String)button_title.getText();
+
+        location_loading_builder = new android.support.v7.app.AlertDialog.Builder(this);
+        location_loading_builder.setMessage("Loading , please wait");
+        location_loading_alertDialog =  location_loading_builder.create();
+        location_loading_alertDialog.setCanceledOnTouchOutside(false);
+        location_loading_alertDialog.show();
+
         if(text_button_title.equals("DOCTORS")){
             button_title.setText("HOSPITALS");
             if(visible==true) {
@@ -323,6 +346,9 @@ public class MainActivity extends AppCompatActivity {
             visible=false;
         }
         else{
+
+            if(GeoLocation.Address_Global==null)
+                GeoLocation.Address_Global="";
             Location_subtitle_textview.setText("Current Location :   "+GeoLocation.Address_Global);
             expand(mDrawerLayout);
             visible = true;
@@ -408,6 +434,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void TableDesign(JSONArray response , String type){
+
+        location_loading_alertDialog.dismiss();
+
         System.out.println("Response is table design");
         TextView view = (TextView)findViewById(R.id.screen_half_textview_id);
         view.setText("List of "+type);

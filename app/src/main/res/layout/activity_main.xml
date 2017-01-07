@@ -132,8 +132,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
                     android:onClick="ScheduleClick"
                     >
 
@@ -179,8 +179,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
                     android:onClick="MedicalShopClick"
                     >
 
@@ -226,8 +226,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
                     android:onClick="TestCenterClick"
                     >
 
@@ -274,8 +274,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
                     android:onClick="RegisterClick"
                     >
 
@@ -320,8 +320,8 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
                     android:onClick="Change_location_click"
                     >
 
@@ -363,11 +363,11 @@
                         android:layout_alignParentEnd="true" />
 
                 </RelativeLayout>
-                <!--<RelativeLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
                     android:onClick="Aboutclick"
                     >
 
@@ -409,7 +409,7 @@
                         android:textColor="#13866f"
                         android:layout_alignParentEnd="true" />
 
-                </RelativeLayout>-->
+                </RelativeLayout>
 
             </LinearLayout>
 

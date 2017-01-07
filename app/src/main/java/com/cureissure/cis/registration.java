@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.regex.Pattern;
 
 import static android.view.View.VISIBLE;
 
@@ -206,6 +207,13 @@ public class registration extends AppCompatActivity {
             location_loading_alertDialog = location_loading_builder.create();
             location_loading_alertDialog.show();
         }
+        else if(!mail.equals("")){
+            if(!isValidEmaillId(mail)){
+                location_loading_builder.setMessage("Please Enter correct Mail format ");
+                location_loading_alertDialog =  location_loading_builder.create();
+                location_loading_alertDialog.show();
+            }
+        }
         else{
 
 
@@ -226,6 +234,17 @@ public class registration extends AppCompatActivity {
             },3000);
         }
     }
+
+    private boolean isValidEmaillId(String email){
+
+        return Pattern.compile("^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
+                + "((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+                + "([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+                + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$").matcher(email).matches();
+    }
+
     public void goToMainBack(){
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);

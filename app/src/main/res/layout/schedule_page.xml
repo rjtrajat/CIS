@@ -110,6 +110,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textColor="#13866f"
+            android:inputType="number"
             android:id="@+id/schedule_mobile_edit_id"
             android:maxLines="1"
             android:singleLine="true"

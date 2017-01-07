@@ -78,9 +78,17 @@ public class GeoLocation extends AppCompatActivity implements LocationListener {
 
             if (!isGPSEnabled && !isNetworkEnabled) {
                 // No network provider is enabled
+                System.out.println("gsp one one one");
+
             } else {
+
+                System.out.println("gsp one one one one");
+
                 this.canGetLocation = true;
                 if (isNetworkEnabled) {
+
+                    System.out.println("gsp one one two");
+
                     locationManager.requestLocationUpdates(
                             LocationManager.NETWORK_PROVIDER,
                             MIN_TIME_BW_UPDATES,
@@ -89,7 +97,11 @@ public class GeoLocation extends AppCompatActivity implements LocationListener {
                     if (locationManager != null) {
                         location = locationManager
                                 .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+                        System.out.println("gsp one one");
                         if (location != null) {
+                            System.out.println("gsp one two");
+
                             latitude = location.getLatitude();
                             longitude = location.getLongitude();
 
@@ -99,7 +111,9 @@ public class GeoLocation extends AppCompatActivity implements LocationListener {
                     }
                 }
                 // If GPS enabled, get latitude/longitude using GPS Services
-                if (isGPSEnabled) {
+               else if (isGPSEnabled) {
+                    System.out.println("gsp one one three");
+
                     if (location == null) {
                         locationManager.requestLocationUpdates(
                                 LocationManager.GPS_PROVIDER,
@@ -109,7 +123,9 @@ public class GeoLocation extends AppCompatActivity implements LocationListener {
                         if (locationManager != null) {
                             location = locationManager
                                     .getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                            System.out.println("gsp one three");
                             if (location != null) {
+                                System.out.println("gsp one four");
                                 latitude = location.getLatitude();
                                 longitude = location.getLongitude();
                                 System.out.println("Logitude and Latitude are "+latitude+" "+longitude);
@@ -125,7 +141,21 @@ public class GeoLocation extends AppCompatActivity implements LocationListener {
 
             Longitude_user = location.getLongitude();
             Latititude_user = location.getLatitude();
-            Address_Global = addr.get(0).getAddressLine(0)+" "+addr.get(0).getAddressLine(1)+" "+addr.get(0).getAddressLine(2)+" "+addr.get(0).getAddressLine(3);
+
+            Address_Global="";
+            if(addr.get(0).getAddressLine(0)!=null)
+                Address_Global += addr.get(0).getAddressLine(0);
+
+            if(addr.get(0).getAddressLine(1)!=null)
+                Address_Global += addr.get(0).getAddressLine(1);
+
+            if(addr.get(0).getAddressLine(2)!=null)
+                Address_Global += addr.get(0).getAddressLine(2);
+
+            if(addr.get(0).getAddressLine(3)!=null)
+                Address_Global += addr.get(0).getAddressLine(3);
+
+          //  Address_Global = addr.get(0).getAddressLine(0)+" "+addr.get(0).getAddressLine(1)+" "+addr.get(0).getAddressLine(2)+" "+addr.get(0).getAddressLine(3);
 
            //  Toast.makeText(mContext,addr.get(0).getAddressLine(0)+" "+addr.get(0).getAddressLine(1)+" "+addr.get(0).getAddressLine(2)+" "+addr.get(0).getAddressLine(3), Toast.LENGTH_LONG).show();
 
@@ -141,7 +171,7 @@ public class GeoLocation extends AppCompatActivity implements LocationListener {
             builder.show();
 
             System.out.println(addr.get(0));
-
+            APIsCall.detailDoctorAPI();
 
 
         }

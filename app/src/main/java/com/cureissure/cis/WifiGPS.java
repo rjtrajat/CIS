@@ -30,15 +30,16 @@ public class WifiGPS extends Activity{
     public static MainActivity ViewForGPSWiFi;
 
      void  checkGPSLocation(LocationManager locationManager,ConnectivityManager connectivityManager,AlertDialog.Builder alertDialogBuilder){
-
+System.out.println("gps come ");
         GeoLocation.Address_Global = null;
         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)){
+            System.out.println("gps come come");
           //  Toast.makeText(ViewForGPSWiFi, "GPS is Enabled in your device", Toast.LENGTH_SHORT).show();
             checkWIFIConnection(    locationManager,connectivityManager,alertDialogBuilder);
         }else{
 
          //   System.out.println("Resume called also");
-
+            System.out.println("gps come come oome");
             showGPSDisabledAlertToUser(alertDialogBuilder);
 
         }
@@ -114,12 +115,14 @@ public class WifiGPS extends Activity{
           //  Toast.makeText(ViewForGPSWiFi, "No Internet Connection", Toast.LENGTH_LONG).show();
 
 
-        } else {
+        }
+
+        else {
 
 
             GeoLocation geoLocation  = new GeoLocation();
             geoLocation.GPSTracker(ViewForGPSWiFi,locationManager);
-
+            System.out.println("gps checking here ");
 
 
         }

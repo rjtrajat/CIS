@@ -29,6 +29,7 @@ import org.json.JSONObject;
 import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.regex.Pattern;
 
 
 import static android.view.View.VISIBLE;
@@ -149,9 +150,76 @@ public class Schedule_page extends AppCompatActivity{
     }
     public void schedule_button(View view){
 
-        APIsCall.getLatestUniquePatientKey();
-        APIsCall.context = this;
+        String nameofpatient ;
+        String contactofpatient ;
+        String mailidofpatient;
+        String problemdescriptionofpatient;
+        String dateofappointment;
+        String timeofappointment;
 
+        EditText editText = (EditText)findViewById(R.id.schedule_name_edit_id);
+        nameofpatient = editText.getText().toString();
+
+        editText = (EditText)findViewById(R.id.schedule_mobile_edit_id);
+        contactofpatient = editText.getText().toString();
+
+        editText = (EditText)findViewById(R.id.schedule_email_edit_id);
+        mailidofpatient = editText.getText().toString();
+
+        TextView textView = (TextView) findViewById(R.id.schedule_date_value_image_id);
+        dateofappointment = textView.getText().toString();
+        textView = (TextView) findViewById(R.id.schedule_time_value_image_id);
+        timeofappointment = textView.getText().toString();
+
+        editText = (EditText)findViewById(R.id.schedule_description_edit_id);
+        problemdescriptionofpatient = editText.getText().toString();
+
+        if(nameofpatient.equals("")||contactofpatient.equals("")||problemdescriptionofpatient.equals("")||dateofappointment.equals("")||timeofappointment.equals(""))
+        {
+
+            String msg = "Please Enter ";
+            if(nameofpatient.equals("")){
+                msg = msg+"Patient Name ";
+            }
+            if(contactofpatient.equals("")){
+                msg = msg+"Contact ";
+            }
+            if(problemdescriptionofpatient.equals("")){
+                msg = msg+"Description ";
+            }
+            if(dateofappointment.equals("")){
+                msg = msg+"Date ";
+            }
+            if(timeofappointment.equals("")){
+                msg = msg+"Time ";
+            }
+            location_loading_builder.setMessage(msg);
+            location_loading_alertDialog =  location_loading_builder.create();
+            location_loading_alertDialog.show();
+        }
+        else if(!mailidofpatient.equals("")){
+if(!isValidEmaillId(mailidofpatient)){
+    location_loading_builder.setMessage("Please Enter correct Mail format ");
+    location_loading_alertDialog =  location_loading_builder.create();
+    location_loading_alertDialog.show();
+}
+        }
+        else {
+            APIsCall.getLatestUniquePatientKey();
+            APIsCall.context = this;
+        }
+    }
+
+
+
+    private boolean isValidEmaillId(String email){
+
+        return Pattern.compile("^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
+                + "((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
+                + "([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
+                + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
+                + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$").matcher(email).matches();
     }
 
     public void schedule_update(JSONObject jsonObject){
@@ -306,34 +374,15 @@ catch (Exception e){
 
     public void goToMain(){
 
-//
-//        try {
-//            SmsManager smsManager = SmsManager.getDefault();
-//            smsManager.sendTextMessage("8653769197", null,"message from cis", null, null);
-////            Toast.makeText(getApplicationContext(), "Message Sent",
-////                    Toast.LENGTH_LONG).show();
-//        } catch (Exception ex) {
-////            Toast.makeText(getApplicationContext(),ex.getMessage().toString(),
-////                    Toast.LENGTH_LONG).show();
-//            ex.printStackTrace();
-//        }
 
-//
-//        try {
-//            GMailSender sender = new GMailSender("rjtrajatsingh2016@gmail.com", "kunDAN1!7417kunDAN2@");
-//            sender.sendMail("This is Subject",
-//                    "This is Body",
-//                    "rjtrajatsingh2016@gmail.com",
-//                    "rajatsingh5111993@gmail.com");
-//        } catch (Exception e) {
-//           System.out.println("Error is "+e);
-//        }
-//        System.out.println("Response is msg shown");
+//        location_loading_builder.setMessage("Schedulling , please wait");
+//        location_loading_alertDialog =  location_loading_builder.create();
+//        location_loading_alertDialog.setCanceledOnTouchOutside(false);
+//        location_loading_alertDialog.show();
 
+        APIsCall.sendMailPatient(uniquekeyappointmentGlobal,nameofpatientGlobal,contactofpatientGlobal,mailidofpatientGlobal,problemdescriptionofpatientGlobal,fulladdressofpatientGlobal,statusvalueGlobal,dateofappointmentGlobal,timeofappointmentGlobal,appointmenttypeGlobal,appointmenttypekeyGlobal,DetailContent.DocHosTestNameGlobal,DetailContent.DocHosTestAboutGlobal,DetailContent.DocHosTestAddressGlobal,DetailContent.DocHosTestExperienceGlobal,DetailContent.DocHosTestMail_idGlobal,DetailContent.DocHosTestMobile_NoGlobal,DetailContent.DocHosTestSpecializationGlobal);
 
-        APIsCall.sendMailPatient(uniquekeyappointmentGlobal,nameofpatientGlobal,contactofpatientGlobal,mailidofpatientGlobal,problemdescriptionofpatientGlobal,fulladdressofpatientGlobal,statusvalueGlobal,dateofappointmentGlobal,timeofappointmentGlobal,appointmenttypeGlobal,appointmenttypekeyGlobal);
-
-
+//        location_loading_alertDialog.dismiss();
         location_loading_builder.setMessage("Appointment Scheduled");
         location_loading_alertDialog =  location_loading_builder.create();
         location_loading_alertDialog.setCanceledOnTouchOutside(false);
