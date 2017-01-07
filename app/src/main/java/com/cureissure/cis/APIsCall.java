@@ -443,13 +443,14 @@ public class APIsCall {
 
     }
 
-    public static void sendMailDocHosTestMed(String name,String mail,String contact,String experience_month,String experience_year){
+    public static void sendMailDocHosTestMed(String name,String mail,String contact,String experience_month,String experience_year,String typeRegister){
         RequestParams rp = new RequestParams();
         rp.put("name", name);
         rp.put("mail", mail);
         rp.put("contact", contact);
         rp.put("experience_month", experience_month);
         rp.put("experience_year", experience_year);
+        rp.put("typeRegister",typeRegister);
 
 
         HttpUtils.get("MailDocHosTestMed", rp, new JsonHttpResponseHandler() {
@@ -529,5 +530,7 @@ public class APIsCall {
         });
 
     }
+
+
 
 }

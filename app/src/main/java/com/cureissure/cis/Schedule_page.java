@@ -203,11 +203,13 @@ if(!isValidEmaillId(mailidofpatient)){
     location_loading_alertDialog =  location_loading_builder.create();
     location_loading_alertDialog.show();
 }
+else {
+
+    APIsCall.getLatestUniquePatientKey();
+    APIsCall.context = this;
+}
         }
-        else {
-            APIsCall.getLatestUniquePatientKey();
-            APIsCall.context = this;
-        }
+
     }
 
 
@@ -381,6 +383,9 @@ catch (Exception e){
 //        location_loading_alertDialog.show();
 
         APIsCall.sendMailPatient(uniquekeyappointmentGlobal,nameofpatientGlobal,contactofpatientGlobal,mailidofpatientGlobal,problemdescriptionofpatientGlobal,fulladdressofpatientGlobal,statusvalueGlobal,dateofappointmentGlobal,timeofappointmentGlobal,appointmenttypeGlobal,appointmenttypekeyGlobal,DetailContent.DocHosTestNameGlobal,DetailContent.DocHosTestAboutGlobal,DetailContent.DocHosTestAddressGlobal,DetailContent.DocHosTestExperienceGlobal,DetailContent.DocHosTestMail_idGlobal,DetailContent.DocHosTestMobile_NoGlobal,DetailContent.DocHosTestSpecializationGlobal);
+
+
+
 
 //        location_loading_alertDialog.dismiss();
         location_loading_builder.setMessage("Appointment Scheduled");

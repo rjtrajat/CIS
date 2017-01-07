@@ -33,6 +33,8 @@ public class registration extends AppCompatActivity {
     public TextView register_month_textview;
     public static android.support.v7.app.AlertDialog.Builder location_loading_builder;
     public static android.support.v7.app.AlertDialog location_loading_alertDialog;
+    public static String typeRegister ;
+
     @Override
     protected void onCreate(Bundle savedInstance){
         super.onCreate(savedInstance);
@@ -117,15 +119,18 @@ public class registration extends AppCompatActivity {
         if(MainActivity.register_index==0){
         tempnametextview.setText("Doctor Name :");
         tempexptextview.setText("Doctor Since :");
+            typeRegister = "DOCTOR";
         }
         else if(MainActivity.register_index==1){
             tempnametextview.setText("Hospital Name :");
             tempexptextview.setText("Established :");
+            typeRegister = "HOSPITAL";
         }
 
         else if(MainActivity.register_index==2){
             tempnametextview.setText("Test Center Name :");
             tempexptextview.setText("Established :");
+            typeRegister = "TEST CENTER";
         }
 
 
@@ -213,26 +218,27 @@ public class registration extends AppCompatActivity {
                 location_loading_alertDialog =  location_loading_builder.create();
                 location_loading_alertDialog.show();
             }
+            else{
+
+
+                APIsCall.sendMailDocHosTestMed(name,mail,contact,experience_month,experience_year,typeRegister);
+
+                location_loading_builder.setMessage("Registered for verification , will contact soon");
+                location_loading_alertDialog =  location_loading_builder.create();
+                location_loading_alertDialog.setCanceledOnTouchOutside(false);
+                location_loading_alertDialog.show();
+
+                Timer timer = new Timer();
+
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        goToMainBack();
+                    }
+                },3000);
+            }
         }
-        else{
 
-
-            APIsCall.sendMailDocHosTestMed(name,mail,contact,experience_month,experience_year);
-
-            location_loading_builder.setMessage("Registered for verification , will contact soon");
-            location_loading_alertDialog =  location_loading_builder.create();
-            location_loading_alertDialog.setCanceledOnTouchOutside(false);
-            location_loading_alertDialog.show();
-
-            Timer timer = new Timer();
-
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    goToMainBack();
-                }
-            },3000);
-        }
     }
 
     private boolean isValidEmaillId(String email){

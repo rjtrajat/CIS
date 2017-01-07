@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#13866f"
-            android:text="CureIsSure(CIS) is a platform where you can find nearby Doctors , Hospitals , Test Centers and Medical shops and also can schedule your appointment with a Doctor , Hospital or Test Center. And even you can also find nearby Medical shop and order Medicines  by uploading your prescription .
+            android:text="CureIsSure(CIS) is a platform where you can find nearby Doctors , Hospitals , Test Centers and Medical shops and also can schedule your appointment with a Doctor , Hospital or Test Center. And even you can also find nearby Medical shop and order Medicines  by uploading your prescription . We are in intial phase of providing this service and we confirm you to improve our service day by day .
             "
             android:textSize="15sp"
             />
