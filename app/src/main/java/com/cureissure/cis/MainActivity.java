@@ -277,6 +277,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     void Change_location_click(View view){
+        location_loading_builder = new android.support.v7.app.AlertDialog.Builder(this);
+        location_loading_builder.setMessage("Loading , please wait");
+        location_loading_alertDialog =  location_loading_builder.create();
+        location_loading_alertDialog.setCanceledOnTouchOutside(false);
         location_loading_alertDialog.show();
         visible=false;
         GeoLocation.Address_Global=null;
@@ -443,9 +447,13 @@ public class MainActivity extends AppCompatActivity {
 
         String Id = "";
         String Name = "";
+        String Nametag = "";
         String Specialization = "";
+        String Specialiazationtag = "";
         String Location = "";
+        String Locationtag = "";
         Double Distance ;
+        String Distancetag = "Distance : ";
         Double long_list;
         Double lat_list;
         Double long_user = GeoLocation.Longitude_user;
@@ -464,25 +472,29 @@ public class MainActivity extends AppCompatActivity {
             try {
                 jsonObject = response.getJSONObject(i);
                 if (type.equals("Doctors")) {
-                    Name = "Doctor Name : "+(String) jsonObject.get("doctorname");
+
+                    Nametag="Doctor Name : ";
+                    Name = (String) jsonObject.get("doctorname");
                     Id = (String) jsonObject.get("cisdocid");
                 }
                 else if (type.equals("Hospitals")) {
-
-                    Name = "Hospital Name : "+(String) jsonObject.get("hospitalname");
+                    Nametag="Hospital Name : ";
+                    Name = (String) jsonObject.get("hospitalname");
                     Id = (String) jsonObject.get("cishosid");
                 }
                 else if (type.equals("MedicalShops")) {
-                    Name = "Medical Shop Name : "+(String) jsonObject.get("medicalshopname");
+                    Nametag="Medical Shop Name : ";
+                    Name = (String) jsonObject.get("medicalshopname");
                     Id = (String) jsonObject.get("cismedid");
                 }
                 else if (type.equals("TestCenters")) {
-                    Name = "Test Center Name : "+(String) jsonObject.get("testcentername");
+                    Nametag="Test Center Name : ";
+                    Name = (String) jsonObject.get("testcentername");
                     Id = (String) jsonObject.get("cistestid");
                 }
 
-
-                Location = "Address : "+(String)jsonObject.get("fulladdress");
+                Locationtag = "Address : ";
+                Location = (String)jsonObject.get("fulladdress");
                 long_list = (Double) jsonObject.get("longitude");
                 lat_list = (Double)jsonObject.get("latitude");
 
@@ -501,20 +513,35 @@ public class MainActivity extends AppCompatActivity {
 
                 TextView textViewImage = (TextView)item.findViewById(R.id.rowlayout_image_id);
                 TextView textViewname = (TextView)item.findViewById(R.id.rowlayout_linear_name_id);
+                TextView textViewnametag = (TextView)item.findViewById(R.id.rowlayout_linear_name_tag_id);
                 TextView textViewspecialization = (TextView)item.findViewById(R.id.rowlayout_linear_specialization_id);
+                TextView textViewspecializationtag = (TextView)item.findViewById(R.id.rowlayout_linear_specialization_tag_id);
                 TextView textViewaddress = (TextView)item.findViewById(R.id.rowlayout_linear_address_id);
+                TextView textViewaddresstag = (TextView)item.findViewById(R.id.rowlayout_linear_address_tag_id);
                 TextView textViewdistance = (TextView)item.findViewById(R.id.rowlayout_linear_distance_id);
+                TextView textViewdistancetag = (TextView)item.findViewById(R.id.rowlayout_linear_distance_tag_id);
 
                 if(!type.equals("MedicalShops")) {
-                    Specialization = "Specialization : " + (String) jsonObject.get("specialization");
+                    Specialiazationtag = "Specialization : " ;
+                            Specialization = (String) jsonObject.get("specialization");
                     textViewspecialization.setText(Specialization);
+                    textViewspecializationtag.setText(Specialiazationtag);
                 }
 
 
                 textViewname.setText(Name);
-
+                textViewnametag.setText(Nametag);
                 textViewaddress.setText(Location);
-                textViewdistance.setText("Distance : "+Double.toString(Distance)+" Km ");
+                textViewaddresstag.setText(Locationtag);
+                textViewdistance.setText(Double.toString(Distance)+" Km ");
+                textViewdistancetag.setText(Distancetag);
+
+
+
+                String charone = Name.trim().substring(0,1);
+
+                System.out.println("check here "+charone);
+                textViewImage.setText(charone);
 
                      tr.addView(item);
 

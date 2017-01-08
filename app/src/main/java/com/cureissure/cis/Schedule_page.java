@@ -49,7 +49,7 @@ public class Schedule_page extends AppCompatActivity{
 
     public String MailPatient;
     public String ContactPatient;
-    private int mYear, mMonth, mDay, mHour, mMinute;
+    private int mYear, mMonth, mDay, mHour, mMinute,mDayWeek;
 
     String uniquekeyappointmentGlobal ;
     String nameofpatientGlobal ;
@@ -174,12 +174,17 @@ public class Schedule_page extends AppCompatActivity{
         editText = (EditText)findViewById(R.id.schedule_description_edit_id);
         problemdescriptionofpatient = editText.getText().toString();
 
-        if(nameofpatient.equals("")||contactofpatient.equals("")||problemdescriptionofpatient.equals("")||dateofappointment.equals("")||timeofappointment.equals(""))
+
+
+        if(nameofpatient.equals("")||mailidofpatient.equals("")||contactofpatient.equals("")||problemdescriptionofpatient.equals("")||dateofappointment.equals("")||timeofappointment.equals(""))
         {
 
             String msg = "Please Enter ";
             if(nameofpatient.equals("")){
                 msg = msg+"Patient Name ";
+            }
+            if(mailidofpatient.equals("")){
+                msg = msg+"Mail ";
             }
             if(contactofpatient.equals("")){
                 msg = msg+"Contact ";
@@ -203,10 +208,21 @@ if(!isValidEmaillId(mailidofpatient)){
     location_loading_alertDialog =  location_loading_builder.create();
     location_loading_alertDialog.show();
 }
+
+
+
 else {
+
+
+
+    location_loading_builder.setMessage("Appointment Schedulling");
+    location_loading_alertDialog =  location_loading_builder.create();
+    location_loading_alertDialog.show();
 
     APIsCall.getLatestUniquePatientKey();
     APIsCall.context = this;
+
+
 }
         }
 
@@ -221,7 +237,7 @@ else {
                 + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
                 + "([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
                 + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
-                + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$").matcher(email).matches();
+                + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$").matcher(email.trim()).matches();
     }
 
     public void schedule_update(JSONObject jsonObject){
@@ -296,13 +312,16 @@ try {
      appointmenttypekeyGlobal = appointmenttypekey;
 
 
-    if(nameofpatient.equals("")||contactofpatient.equals("")||problemdescriptionofpatient.equals("")||dateofappointment.equals("")||timeofappointment.equals(""))
+    if(nameofpatient.equals("")||mailidofpatient.equals("")||contactofpatient.equals("")||problemdescriptionofpatient.equals("")||dateofappointment.equals("")||timeofappointment.equals(""))
     {
 //        location_loading_builder = new android.support.v7.app.AlertDialog.Builder(this);
 //        location_loading_alertDialog =  location_loading_builder.create();
         String msg = "Please Enter ";
         if(nameofpatient.equals("")){
             msg = msg+"Patient Name ";
+        }
+        if(mailidofpatient.equals("")){
+            msg = msg+"Mail ";
         }
         if(contactofpatient.equals("")){
             msg = msg+"Contact ";
@@ -358,6 +377,8 @@ catch (Exception e){
         mYear = c.get(Calendar.YEAR);
         mMonth = c.get(Calendar.MONTH);
         mDay = c.get(Calendar.DAY_OF_MONTH);
+        mDayWeek = c.get(Calendar.DAY_OF_WEEK);
+
 
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,
@@ -365,30 +386,27 @@ catch (Exception e){
 
                     @Override
                     public void onDateSet(DatePicker view, int year,
-                                          int monthOfYear, int dayOfMonth) {
+                                          int monthOfYear, int dayOfMonth) { 
 
                         txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
 
                     }
                 }, mYear, mMonth, mDay);
+
         datePickerDialog.show();
     }
 
     public void goToMain(){
 
 
-//        location_loading_builder.setMessage("Schedulling , please wait");
-//        location_loading_alertDialog =  location_loading_builder.create();
-//        location_loading_alertDialog.setCanceledOnTouchOutside(false);
-//        location_loading_alertDialog.show();
 
         APIsCall.sendMailPatient(uniquekeyappointmentGlobal,nameofpatientGlobal,contactofpatientGlobal,mailidofpatientGlobal,problemdescriptionofpatientGlobal,fulladdressofpatientGlobal,statusvalueGlobal,dateofappointmentGlobal,timeofappointmentGlobal,appointmenttypeGlobal,appointmenttypekeyGlobal,DetailContent.DocHosTestNameGlobal,DetailContent.DocHosTestAboutGlobal,DetailContent.DocHosTestAddressGlobal,DetailContent.DocHosTestExperienceGlobal,DetailContent.DocHosTestMail_idGlobal,DetailContent.DocHosTestMobile_NoGlobal,DetailContent.DocHosTestSpecializationGlobal);
 
 
 
 
-//        location_loading_alertDialog.dismiss();
-        location_loading_builder.setMessage("Appointment Scheduled");
+       location_loading_alertDialog.dismiss();
+        location_loading_builder.setMessage("Appointment Scheduled , please check your mail");
         location_loading_alertDialog =  location_loading_builder.create();
         location_loading_alertDialog.setCanceledOnTouchOutside(false);
         location_loading_alertDialog.show();

@@ -223,7 +223,7 @@ public class registration extends AppCompatActivity {
 
                 APIsCall.sendMailDocHosTestMed(name,mail,contact,experience_month,experience_year,typeRegister);
 
-                location_loading_builder.setMessage("Registered for verification , will contact soon");
+                location_loading_builder.setMessage("Registered for verification , please check your mail");
                 location_loading_alertDialog =  location_loading_builder.create();
                 location_loading_alertDialog.setCanceledOnTouchOutside(false);
                 location_loading_alertDialog.show();
@@ -248,7 +248,7 @@ public class registration extends AppCompatActivity {
                 + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
                 + "([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
                 + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
-                + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$").matcher(email).matches();
+                + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$").matcher(email.trim()).matches();
     }
 
     public void goToMainBack(){

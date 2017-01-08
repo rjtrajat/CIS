@@ -36,6 +36,9 @@ public class DetailContent extends AppCompatActivity {
     static String  DocHosTestMail_idGlobal = "";
     static String  DocHosTestMobile_NoGlobal = "";
     static String  DocHosTestAddressGlobal = "";
+    static String DocHosTestFeesGlobal = "";
+    static String DocHosTestDaysClosedGlobal = "";
+    static String DocHosTestOpenTimeGlobal = "";
 
     TextView detailtitle ;
     @Override
@@ -113,6 +116,24 @@ public class DetailContent extends AppCompatActivity {
         view.getLayoutParams().height=viewHeight;
         view.getLayoutParams().width=viewWidth;
 
+        view = findViewById(R.id.detail_content__parent_fees_id);
+        viewHeight=(int)(screenHeight*7)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+        view = findViewById(R.id.detail_content__parent_daysclosed_id);
+        viewHeight=(int)(screenHeight*7)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
+        view = findViewById(R.id.detail_content__parent_opentime_id);
+        viewHeight=(int)(screenHeight*7)/100;
+        viewWidth = (int)(screenWidth*100)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
 
         viewHeight=(int)(screenHeight*11)/100;
         view = findViewById(R.id.detail_content_submit_schedule_id);
@@ -171,6 +192,9 @@ public class DetailContent extends AppCompatActivity {
         startActivity(intent);
     }
     public void DetailDesign(JSONObject jsonObject){
+
+
+
 System.out.println("Response is detail content "+jsonObject);
         location_loading_alertDialog.dismiss();
         Button button_register = (Button)findViewById(R.id.Button_schedule_Bar);
@@ -182,6 +206,9 @@ System.out.println("Response is detail content "+jsonObject);
         String Mail_id = "";
         String Mobile_No = "";
         String Address = "";
+        String fees = "";
+        String daysClosed = "";
+        String openTime = "";
 
         try {
            if (MainActivity.clicked_id.contains("CIS_DOC")) {
@@ -221,6 +248,10 @@ System.out.println("Response is detail content "+jsonObject);
                 Address = (String) jsonObject.get("fulladdress");
             }
 
+             fees = (String) jsonObject.get("fees");
+             daysClosed = (String) jsonObject.get("daysclosed");
+             openTime = (String) jsonObject.get("opentime");
+
             TextView textView = (TextView)findViewById(R.id.detail_content_about_id);
             if(!About.equals("")){
                 textView.setText(About);
@@ -257,6 +288,19 @@ System.out.println("Response is detail content "+jsonObject);
             if(!Specialization.equals("")){
                 textView.setText(Specialization);
             }
+            textView = (TextView)findViewById(R.id.detail_content_fees_id);
+            if(!fees.equals("")){
+                textView.setText(fees);
+            }
+            textView = (TextView)findViewById(R.id.detail_content_daysclosed_id);
+            if(!daysClosed.equals("")){
+                textView.setText(daysClosed);
+            }
+
+            textView = (TextView)findViewById(R.id.detail_content_opentime_id);
+            if(!openTime.equals("")){
+                textView.setText(openTime);
+            }
 
 
 
@@ -267,6 +311,9 @@ System.out.println("Response is detail content "+jsonObject);
             DocHosTestMail_idGlobal = Mail_id;
              DocHosTestMobile_NoGlobal = Mobile_No;
             DocHosTestAddressGlobal = Address;
+            DocHosTestFeesGlobal = fees;
+            DocHosTestDaysClosedGlobal = daysClosed ;
+            DocHosTestOpenTimeGlobal = openTime;
 
             if(MainActivity.clicked_id.contains("CIS_MED")){
 //                LinearLayout linearLayout = (LinearLayout)findViewById(R.id.detail_content__parent_about_id);

@@ -9,22 +9,28 @@
         android:id="@+id/rowlayout_linear_id"
         android:background="#ffffffff"
         >
-
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:background="@drawable/icon"-->
-            <!--android:id="@+id/rowlayout_image_id"-->
-            <!--android:layout_marginLeft="10sp"-->
-            <!--android:layout_marginRight="10sp"-->
-            <!--android:layout_gravity="center_vertical" />-->
+<!--
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:background="@drawable/icon"
             android:id="@+id/rowlayout_image_id"
             android:layout_marginLeft="10sp"
             android:layout_marginRight="10sp"
+            android:layout_gravity="center_vertical" />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#169c81"
+            android:text="A"
+            android:textSize="40sp"
+            android:textColor="#ffffff"
+            android:id="@+id/rowlayout_image_id"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:textStyle="bold"
+            android:paddingLeft="10sp"
+            android:paddingRight="10sp"
             android:layout_gravity="center_vertical" />
         <LinearLayout
             android:layout_width="fill_parent"
@@ -33,26 +39,76 @@
             android:id="@+id/rowlayout_linear_linear_id"
 
             >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rowlayout_linear_name_tag_id"
+                    android:textStyle="bold"
+                    />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/rowlayout_linear_name_id"
                 />
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rowlayout_linear_address_tag_id"
+                    android:textStyle="bold"
+                    />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/rowlayout_linear_address_id"
                 />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rowlayout_linear_distance_tag_id"
+                    android:textStyle="bold"
+                    />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/rowlayout_linear_distance_id"
-                />
+                /> </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rowlayout_linear_specialization_tag_id"
+                    android:textStyle="bold"
+                    />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/rowlayout_linear_specialization_id"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 <TextView

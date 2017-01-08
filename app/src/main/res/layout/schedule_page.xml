@@ -81,7 +81,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Optional"
+
             android:id="@+id/schedule_email_edit_id"
             android:textColor="#13866f"
             android:maxLines="1"

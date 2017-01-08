@@ -136,43 +136,55 @@ public class GeoLocation extends AppCompatActivity implements LocationListener {
                 }
             }
 
-            Geocoder geocoder = new Geocoder(this);
-            List<Address> addr = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+            if(location==null){
+                MainActivity.location_loading_alertDialog.dismiss();
 
-            Longitude_user = location.getLongitude();
-            Latititude_user = location.getLatitude();
+                MainActivity.location_loading_builder = new android.support.v7.app.AlertDialog.Builder(mContext);
+                MainActivity.location_loading_builder.setMessage("Not Able to load location , please change location from menu option");
+                MainActivity.location_loading_alertDialog =  MainActivity.location_loading_builder.create();
 
-            Address_Global="";
-            if(addr.get(0).getAddressLine(0)!=null)
-                Address_Global += addr.get(0).getAddressLine(0);
+                MainActivity.location_loading_alertDialog.show();
+               // wifigps.checkGPSLocation(MainActivity.locationManager,connectivityManager,alertDialogBuilder);
+            }
+else {
 
-            if(addr.get(0).getAddressLine(1)!=null)
-                Address_Global += addr.get(0).getAddressLine(1);
+                Geocoder geocoder = new Geocoder(this);
+                List<Address> addr = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
 
-            if(addr.get(0).getAddressLine(2)!=null)
-                Address_Global += addr.get(0).getAddressLine(2);
+                Longitude_user = location.getLongitude();
+                Latititude_user = location.getLatitude();
 
-            if(addr.get(0).getAddressLine(3)!=null)
-                Address_Global += addr.get(0).getAddressLine(3);
+                Address_Global = "";
+                if (addr.get(0).getAddressLine(0) != null)
+                    Address_Global += addr.get(0).getAddressLine(0);
 
-          //  Address_Global = addr.get(0).getAddressLine(0)+" "+addr.get(0).getAddressLine(1)+" "+addr.get(0).getAddressLine(2)+" "+addr.get(0).getAddressLine(3);
+                if (addr.get(0).getAddressLine(1) != null)
+                    Address_Global += addr.get(0).getAddressLine(1);
 
-           //  Toast.makeText(mContext,addr.get(0).getAddressLine(0)+" "+addr.get(0).getAddressLine(1)+" "+addr.get(0).getAddressLine(2)+" "+addr.get(0).getAddressLine(3), Toast.LENGTH_LONG).show();
+                if (addr.get(0).getAddressLine(2) != null)
+                    Address_Global += addr.get(0).getAddressLine(2);
 
-            MainActivity.location_loading_alertDialog.dismiss();
+                if (addr.get(0).getAddressLine(3) != null)
+                    Address_Global += addr.get(0).getAddressLine(3);
 
-            android.support.v7.app.AlertDialog.Builder builder;
+                //  Address_Global = addr.get(0).getAddressLine(0)+" "+addr.get(0).getAddressLine(1)+" "+addr.get(0).getAddressLine(2)+" "+addr.get(0).getAddressLine(3);
 
-            builder = new android.support.v7.app.AlertDialog.Builder(mContext);
-            builder.setTitle("New Location");
-            builder.setMessage(Address_Global);
-            builder.setPositiveButton(android.R.string.ok,null);
+                //  Toast.makeText(mContext,addr.get(0).getAddressLine(0)+" "+addr.get(0).getAddressLine(1)+" "+addr.get(0).getAddressLine(2)+" "+addr.get(0).getAddressLine(3), Toast.LENGTH_LONG).show();
 
-            builder.show();
+                MainActivity.location_loading_alertDialog.dismiss();
 
-            System.out.println(addr.get(0));
-            APIsCall.detailDoctorAPI();
+                android.support.v7.app.AlertDialog.Builder builder;
 
+                builder = new android.support.v7.app.AlertDialog.Builder(mContext);
+                builder.setTitle("New Location");
+                builder.setMessage(Address_Global);
+                builder.setPositiveButton(android.R.string.ok, null);
+
+                builder.show();
+
+                System.out.println(addr.get(0));
+                APIsCall.detailDoctorAPI();
+            }
 
         }
         catch (Exception e) {
