@@ -26,13 +26,20 @@ import android.widget.TimePicker;
 
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.regex.Pattern;
 
 
 import static android.view.View.VISIBLE;
+import static com.cureissure.cis.DetailContent.DocHosTestDaysClosedGlobal;
+import static com.cureissure.cis.DetailContent.DocHosTestOpenTimeGlobal;
 import static com.cureissure.cis.MainActivity.clicked_id;
 
 /**
@@ -49,7 +56,11 @@ public class Schedule_page extends AppCompatActivity{
 
     public String MailPatient;
     public String ContactPatient;
-    private int mYear, mMonth, mDay, mHour, mMinute,mDayWeek;
+     public  int mYear, mMonth, mDay, mHour, mMinute,mDayWeek;
+    int weekDayIndex ;
+
+    int GlobalYear,GlobalMonth,GlobalDay,GlobalWeekDay;
+    int GlobalHour, GlobalMinute;
 
     String uniquekeyappointmentGlobal ;
     String nameofpatientGlobal ;
@@ -213,15 +224,148 @@ if(!isValidEmaillId(mailidofpatient)){
 
 else {
 
+try {
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+    String monthpre="";
+    String daypre="";
+
+    if(GlobalMonth<10){
+        monthpre="0";
+    }
+    if(GlobalDay<10){
+        daypre="0";
+    }
 
 
-    location_loading_builder.setMessage("Appointment Schedulling");
-    location_loading_alertDialog =  location_loading_builder.create();
-    location_loading_alertDialog.show();
 
-    APIsCall.getLatestUniquePatientKey();
-    APIsCall.context = this;
+        final Date     date = dateFormat.parse(GlobalYear + "-"+monthpre + GlobalMonth + "-"+daypre + GlobalDay);
+    final Calendar calendar = Calendar.getInstance();
+    calendar.setTime(date);
+    weekDayIndex = calendar.get(Calendar.DAY_OF_WEEK);
+    System.out.println("Response is week day date"+GlobalYear + "-"+monthpre + GlobalMonth + "-"+daypre + GlobalDay + " index "+weekDayIndex);
 
+    weekDayIndex--;
+
+    String[] allday = {"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"};
+    String choosenDay = allday[weekDayIndex];
+
+    String[]   closeddayslist =  DocHosTestDaysClosedGlobal.split(",");
+
+
+    int i = 0;
+    boolean flag = true;
+
+    while(closeddayslist.length>i){
+        if(choosenDay.equals(closeddayslist[i].trim())){
+            flag= false;
+            break;
+        }
+        i++;
+    }
+
+    if(flag==false){
+        location_loading_builder.setMessage("Please choose another day , closed on "+closeddayslist[i]);
+        location_loading_alertDialog = location_loading_builder.create();
+        location_loading_alertDialog.show();
+    }
+
+else {
+        String[]   opentime = DocHosTestOpenTimeGlobal.split(",");
+        boolean flagtime = false;
+
+        Double range = GlobalHour*1.0 + (GlobalMinute*1.0)/(60.0);
+
+        int j  = 0;
+
+        while(opentime.length>j){
+
+            System.out.println("Response is range "+opentime[j]);
+
+            String[] rangetime = opentime[j].split("-");
+            int timeone , timetwo;
+
+            if(rangetime[0].contains("PM")){
+                timeone = Integer.parseInt(rangetime[0].replace("PM"," ").trim()) + 12;
+            }
+            else{
+                timeone = Integer.parseInt((rangetime[0].replace("AM"," ")).trim());
+            }
+
+            if(rangetime[1].contains("PM")){
+                timetwo = Integer.parseInt(rangetime[1].replace("PM"," ").trim()) + 12;
+            }
+            else{
+                timetwo = Integer.parseInt(rangetime[1].replace("AM"," ").trim());
+            }
+
+            System.out.println("Response is timeone timetwo "+timeone+" "+timetwo);
+
+            if(range>=timeone&&range<=timetwo){
+                flagtime = true;
+                break;
+            }
+
+
+            j++;
+
+
+        }
+
+        if(flagtime==false){
+            location_loading_builder.setMessage("Appointment Time should be "+DocHosTestOpenTimeGlobal);
+            location_loading_alertDialog = location_loading_builder.create();
+            location_loading_alertDialog.show();
+
+        }
+else {
+            DateFormat dateFormatselect = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+
+            String hourpre="";
+            String minpre="";
+
+            if(GlobalHour<10){
+                hourpre="0";
+
+            }
+
+            if(GlobalDay<10){
+                minpre="0";
+            }
+
+
+            final Date     selectedDate = dateFormatselect.parse(GlobalYear + "-"+monthpre + GlobalMonth + "-"+daypre + GlobalDay+" "+hourpre+GlobalHour+":"+minpre+GlobalMinute);
+          final Date currentDate = Calendar.getInstance().getTime();
+
+            boolean flagselected = false;
+
+            System.out.println("Response is time time "+ GlobalYear + "-"+monthpre + GlobalMonth + "-"+daypre + GlobalDay+" "+hourpre+GlobalHour+":"+minpre+GlobalMinute);
+            System.out.println("Response is time "+currentDate+" "+selectedDate);
+
+            if(selectedDate.compareTo(currentDate)>0){
+                flagselected = true;
+          }
+
+        if(flagselected == false){
+            location_loading_builder.setMessage("Please Select time after current time ");
+            location_loading_alertDialog = location_loading_builder.create();
+            location_loading_alertDialog.show();
+        }
+            else {
+
+            location_loading_builder.setMessage("Appointment Schedulling");
+            location_loading_alertDialog = location_loading_builder.create();
+            location_loading_alertDialog.show();
+            APIsCall.getLatestUniquePatientKey();
+            APIsCall.context = this;
+        }
+        }
+    }
+
+}
+catch (Exception e){
+
+}
 
 }
         }
@@ -363,6 +507,10 @@ catch (Exception e){
                                           int minute) {
 
                         txtTime.setText(hourOfDay + ":" + minute);
+
+                        GlobalHour  = hourOfDay;
+                        GlobalMinute = minute;
+
                     }
                 }, mHour, mMinute, false);
 
@@ -386,9 +534,12 @@ catch (Exception e){
 
                     @Override
                     public void onDateSet(DatePicker view, int year,
-                                          int monthOfYear, int dayOfMonth) { 
+                                          int monthOfYear, int dayOfMonth)  {
 
                         txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+                            GlobalDay = dayOfMonth;
+                        GlobalMonth = monthOfYear + 1;
+                        GlobalYear = year;
 
                     }
                 }, mYear, mMonth, mDay);
