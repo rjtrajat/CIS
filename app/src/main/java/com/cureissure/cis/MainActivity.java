@@ -6,7 +6,10 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
@@ -33,6 +36,10 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -511,7 +518,7 @@ public class MainActivity extends AppCompatActivity {
                 int viewWidth = (int)(screenWidth*90);
                 item.getLayoutParams().width=viewWidth;
 
-                TextView textViewImage = (TextView)item.findViewById(R.id.rowlayout_image_id);
+           final     TextView textViewImage = (TextView)item.findViewById(R.id.rowlayout_image_id);
                 TextView textViewname = (TextView)item.findViewById(R.id.rowlayout_linear_name_id);
                 TextView textViewnametag = (TextView)item.findViewById(R.id.rowlayout_linear_name_tag_id);
                 TextView textViewspecialization = (TextView)item.findViewById(R.id.rowlayout_linear_specialization_id);
@@ -541,9 +548,20 @@ public class MainActivity extends AppCompatActivity {
                 String charone = Name.trim().substring(0,1);
 
                 System.out.println("check here "+charone);
-                textViewImage.setText(charone);
 
-                     tr.addView(item);
+//                textViewImage.setText(charone);
+
+                Glide.with(this).load("http://elasticbeanstalk-us-west-2-824932500732.s3.amazonaws.com/Images/android-icon-36x36new.png").asBitmap().into(new SimpleTarget<Bitmap>() {
+                    @Override
+                    public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                        Drawable drawable = new BitmapDrawable(resource);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                            textViewImage.setBackground(drawable);
+                        }
+                    }
+                });
+
+                tr.addView(item);
 
                 tr.setBackgroundColor(Color.WHITE);
                 tr.setTag(Id);

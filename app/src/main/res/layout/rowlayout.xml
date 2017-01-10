@@ -18,10 +18,24 @@
             android:layout_marginLeft="10sp"
             android:layout_marginRight="10sp"
             android:layout_gravity="center_vertical" />-->
-        <TextView
+        <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#169c81"
+            android:text="A"
+            android:textSize="40sp"
+            android:textColor="#ffffff"
+            android:id="@+id/rowlayout_image_id"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="10sp"
+            android:textStyle="bold"
+            android:paddingLeft="10sp"
+            android:paddingRight="10sp"
+            android:layout_gravity="center_vertical" />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
             android:text="A"
             android:textSize="40sp"
             android:textColor="#ffffff"
