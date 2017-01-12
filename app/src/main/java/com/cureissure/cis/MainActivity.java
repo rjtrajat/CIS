@@ -137,6 +137,9 @@ public class MainActivity extends AppCompatActivity {
         view.getLayoutParams().width=viewWidth;
 
 
+
+
+
         //Dialog box for loading
 
         location_loading_builder = new android.support.v7.app.AlertDialog.Builder(this);
@@ -461,6 +464,7 @@ public class MainActivity extends AppCompatActivity {
         String Locationtag = "";
         Double Distance ;
         String Distancetag = "Distance : ";
+        String image = "";
         Double long_list;
         Double lat_list;
         Double long_user = GeoLocation.Longitude_user;
@@ -504,6 +508,7 @@ public class MainActivity extends AppCompatActivity {
                 Location = (String)jsonObject.get("fulladdress");
                 long_list = (Double) jsonObject.get("longitude");
                 lat_list = (Double)jsonObject.get("latitude");
+                image = (String )jsonObject.get("imagethumb");
 
                 Distance =  CalculateDistance.distanceCal(long_user,lat_user,long_list,lat_list);
 
@@ -551,7 +556,16 @@ public class MainActivity extends AppCompatActivity {
 
 //                textViewImage.setText(charone);
 
-                Glide.with(this).load("http://elasticbeanstalk-us-west-2-824932500732.s3.amazonaws.com/Images/android-icon-36x36new.png").asBitmap().into(new SimpleTarget<Bitmap>() {
+                //String ImageUrl = "http://elasticbeanstalk-us-west-2-824932500732.s3.amazonaws.com/Images/"+image+".jpg";
+                String ImageUrl = "https://cureissure.000webhostapp.com/"+image+".jpg";
+
+
+                int viewHeightview=(int)(screenHeight*15)/100;
+                int viewWidthview = (int)(screenWidth*25)/100
+;                textViewImage.getLayoutParams().height=viewHeightview;
+                textViewImage.getLayoutParams().width=viewWidthview;
+
+                Glide.with(this).load(ImageUrl).asBitmap().into(new SimpleTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                         Drawable drawable = new BitmapDrawable(resource);
