@@ -6,7 +6,7 @@ import com.loopj.android.http.*;
  */
 
 public class HttpUtils {
-    private static final String BASE_URL = "http://Sample-env-1.u3ecpgig9r.us-west-2.elasticbeanstalk.com/";
+    private static final String BASE_URL = "http://Sample-env.u3ecpgig9r.us-west-2.elasticbeanstalk.com/";
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 

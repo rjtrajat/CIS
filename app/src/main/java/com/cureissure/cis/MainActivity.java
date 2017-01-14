@@ -484,22 +484,22 @@ public class MainActivity extends AppCompatActivity {
                 jsonObject = response.getJSONObject(i);
                 if (type.equals("Doctors")) {
 
-                    Nametag="Doctor Name : ";
+                    Nametag="Name : ";
                     Name = (String) jsonObject.get("doctorname");
                     Id = (String) jsonObject.get("cisdocid");
                 }
                 else if (type.equals("Hospitals")) {
-                    Nametag="Hospital Name : ";
+                    Nametag="Name : ";
                     Name = (String) jsonObject.get("hospitalname");
                     Id = (String) jsonObject.get("cishosid");
                 }
                 else if (type.equals("MedicalShops")) {
-                    Nametag="Medical Shop Name : ";
+                    Nametag="Name : ";
                     Name = (String) jsonObject.get("medicalshopname");
                     Id = (String) jsonObject.get("cismedid");
                 }
                 else if (type.equals("TestCenters")) {
-                    Nametag="Test Center Name : ";
+                    Nametag="Name : ";
                     Name = (String) jsonObject.get("testcentername");
                     Id = (String) jsonObject.get("cistestid");
                 }
@@ -560,8 +560,8 @@ public class MainActivity extends AppCompatActivity {
                 String ImageUrl = "https://cureissure.000webhostapp.com/"+image+".jpg";
 
 
-                int viewHeightview=(int)(screenHeight*15)/100;
-                int viewWidthview = (int)(screenWidth*25)/100
+                int viewHeightview=(int)(screenHeight*25)/100;
+                int viewWidthview = (int)(screenWidth*35)/100
 ;                textViewImage.getLayoutParams().height=viewHeightview;
                 textViewImage.getLayoutParams().width=viewWidthview;
 
