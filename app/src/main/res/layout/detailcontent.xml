@@ -35,17 +35,46 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="20sp"
-        android:layout_marginRight="20sp"
+        android:id="@+id/linear_detail_image_table_id"
         >
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <HorizontalScrollView
+                android:id="@+id/horizontal_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:id="@+id/linear_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_content__parent_name_id"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="5sp"
+
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
             >
         <TextView
             android:layout_width="wrap_content"
@@ -73,13 +102,15 @@
             android:layout_width="fill_parent"
             android:layout_height="1sp"
             android:background="#169c81"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
             />
         <LinearLayout
             android:layout_width="match_parent"
             android:id="@+id/detail_content__parent_about_id"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="5sp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
             >
 
         <TextView
@@ -105,13 +136,15 @@
             android:layout_width="fill_parent"
             android:layout_height="1sp"
             android:background="#169c81"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
             />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_content__parent_specialization_id"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="5sp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
             >
 
             <TextView
@@ -136,13 +169,15 @@
             android:layout_width="fill_parent"
             android:layout_height="1sp"
             android:background="#169c81"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
             />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_content__parent_experience_id"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="5sp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
             >
 
             <TextView
@@ -167,13 +202,15 @@
             android:layout_width="fill_parent"
             android:layout_height="1sp"
             android:background="#169c81"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
             />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_content__parent_mail_id"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="5sp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
             >
 
             <TextView
@@ -198,13 +235,15 @@
             android:layout_width="fill_parent"
             android:layout_height="1sp"
             android:background="#169c81"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
             />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_content__parent_mobile_id"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="5sp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
             >
 
             <TextView
@@ -229,13 +268,15 @@
             android:layout_width="fill_parent"
             android:layout_height="1sp"
             android:background="#169c81"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
             />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_content__parent_address_id"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="5sp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
             >
 
             <TextView
@@ -261,13 +302,15 @@
             android:layout_width="fill_parent"
             android:layout_height="1sp"
             android:background="#169c81"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
             />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_content__parent_fees_id"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="5sp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
             >
 
             <TextView
@@ -292,13 +335,15 @@
             android:layout_width="fill_parent"
             android:layout_height="1sp"
             android:background="#169c81"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
             />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_content__parent_daysclosed_id"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="5sp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
             >
 
             <TextView
@@ -323,13 +368,15 @@
             android:layout_width="fill_parent"
             android:layout_height="1sp"
             android:background="#169c81"
+            android:layout_marginLeft="20sp"
+            android:layout_marginRight="20sp"
             />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/detail_content__parent_opentime_id"
-            android:layout_marginLeft="5sp"
-            android:layout_marginRight="5sp"
+            android:layout_marginLeft="25sp"
+            android:layout_marginRight="25sp"
             >
 
             <TextView
@@ -352,7 +399,9 @@
         </LinearLayout>
 
     </LinearLayout>
-    <RelativeLayout
+    </ScrollView>
+    </LinearLayout>
+   <!-- <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/detail_content_submit_schedule_id"
@@ -374,5 +423,30 @@
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:textColor="#13866f" />
+    </RelativeLayout>-->
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/detail_content_submit_schedule_id"
+        android:layout_gravity="center_horizontal"
+
+        android:layout_marginTop="2sp"
+        >
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:id="@+id/Button_schedule_Bar"
+            android:text="Book Appointment"
+            android:paddingLeft="6sp"
+            android:paddingRight="6sp"
+            android:onClick="schedule_button"
+
+            android:background="#169c81"
+
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#ffff" />
     </RelativeLayout>
 </LinearLayout>

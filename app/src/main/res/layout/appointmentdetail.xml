@@ -29,7 +29,18 @@
             android:textStyle="bold"
             android:layout_centerVertical="true"
             android:textColor="#ffffff" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:id="@+id/Button_Title_Appoint_Bar"
+            android:text="CANCEL"
+            android:onClick="Button_Title_On_Title_Bar"
 
+            android:background="@drawable/roundedbutton"
+
+            android:layout_centerVertical="true"
+            android:textColor="#13866f" />
 
     </RelativeLayout>
     <LinearLayout

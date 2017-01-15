@@ -1,7 +1,12 @@
 package com.cureissure.cis;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +19,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -39,6 +48,8 @@ public class DetailContent extends AppCompatActivity {
     static String DocHosTestFeesGlobal = "";
     static String DocHosTestDaysClosedGlobal = "";
     static String DocHosTestOpenTimeGlobal = "";
+    int screenHeight ;
+    int screenWidth ;
 
     TextView detailtitle ;
     @Override
@@ -48,8 +59,8 @@ public class DetailContent extends AppCompatActivity {
         setContentView(R.layout.detailcontent);
         DisplayMetrics displaymetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-        int screenHeight = displaymetrics.heightPixels;
-        int screenWidth = displaymetrics.widthPixels;
+         screenHeight = displaymetrics.heightPixels;
+         screenWidth = displaymetrics.widthPixels;
         View view = findViewById(R.id.Detail_Content_TitleBar);
         System.out.println("I am here");
         int viewHeight=(int)(screenHeight*10)/100;
@@ -135,10 +146,17 @@ public class DetailContent extends AppCompatActivity {
         view.getLayoutParams().width=viewWidth;
 
 
-        viewHeight=(int)(screenHeight*11)/100;
-        view = findViewById(R.id.detail_content_submit_schedule_id);
+//        viewHeight=(int)(screenHeight*11)/100;
+//        view = findViewById(R.id.detail_content_submit_schedule_id);
+//        view.getLayoutParams().height=viewHeight;
+//        view.getLayoutParams().width=viewWidth;
+
+        viewHeight=(int)(screenHeight*77)/100;
+        view = findViewById(R.id.linear_detail_image_table_id);
         view.getLayoutParams().height=viewHeight;
-        view.getLayoutParams().width=viewWidth;
+
+
+
     }
 
     @Override
@@ -209,6 +227,57 @@ System.out.println("Response is detail content "+jsonObject);
         String fees = "";
         String daysClosed = "";
         String openTime = "";
+        String ImageUrls = " ";
+
+        try {
+            ImageUrls = (String) jsonObject.get("imageurls");
+        }
+        catch (Exception e){
+
+        }
+
+        String[]   ImageUrlList =  ImageUrls.split(",");
+
+        LinearLayout layout = (LinearLayout) findViewById(R.id.linear_horizontal);
+        int viewHeightview=(int)(screenHeight*35)/100;
+        layout.getLayoutParams().height=viewHeightview;
+        String ImageUrl;
+
+        for (int i = 0; i < ImageUrlList.length; i++) {
+
+            String image = ImageUrlList[i].trim();
+            ImageUrl = "https://cureissure.000webhostapp.com/"+image+".jpg";
+
+          final  ImageView imageView = new ImageView(this);
+            imageView.setId(i);
+            imageView.setPadding(2, 2,2, 2);
+//            imageView.setImageBitmap(BitmapFactory.decodeResource(
+//                    getResources(), R.drawable.ic_launcher));
+
+
+
+
+            Glide.with(this).load(ImageUrl).asBitmap().into(new SimpleTarget<Bitmap>() {
+                @Override
+                public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                    Drawable drawable = new BitmapDrawable(resource);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                        imageView.setBackground(drawable);
+                    }
+                }
+            });
+
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+
+
+            layout.addView(imageView);
+            int viewWidthview=(int)(screenWidth);
+            imageView.getLayoutParams().width=viewWidthview;
+        }
+
+
+
+
 
         try {
            if (MainActivity.clicked_id.contains("CIS_DOC")) {
@@ -220,6 +289,7 @@ System.out.println("Response is detail content "+jsonObject);
                 Mail_id = (String) jsonObject.get("mailid");
                 Mobile_No = (String) jsonObject.get("contact");
                 Address = (String) jsonObject.get("fulladdress");
+               fees = (String) jsonObject.get("fees");
 
             } else if (MainActivity.clicked_id.contains("CIS_HOS")) {
                 Name = (String) jsonObject.get("hospitalname");
@@ -229,6 +299,7 @@ System.out.println("Response is detail content "+jsonObject);
                 Mail_id = (String) jsonObject.get("mailid");
                 Mobile_No = (String) jsonObject.get("contact");
                 Address = (String) jsonObject.get("fulladdress");
+               fees = (String) jsonObject.get("fees");
 
             } else if (MainActivity.clicked_id.contains("CIS_MED")) {
 
@@ -246,9 +317,10 @@ System.out.println("Response is detail content "+jsonObject);
                 Mail_id = (String) jsonObject.get("mailid");
                 Mobile_No = (String) jsonObject.get("contact");
                 Address = (String) jsonObject.get("fulladdress");
+               fees = (String) jsonObject.get("fees");
             }
 
-             fees = (String) jsonObject.get("fees");
+
              daysClosed = (String) jsonObject.get("daysclosed");
              openTime = (String) jsonObject.get("opentime");
 

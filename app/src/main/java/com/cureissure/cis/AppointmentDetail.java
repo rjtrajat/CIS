@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,6 +18,8 @@ import android.widget.TextView;
 import org.json.JSONObject;
 
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static android.view.View.VISIBLE;
 import static com.cureissure.cis.APIsCall.context;
@@ -30,6 +33,7 @@ public class AppointmentDetail extends AppCompatActivity{
     EditText editTextkeybutton;
     public static android.support.v7.app.AlertDialog.Builder location_loading_builder;
     public static android.support.v7.app.AlertDialog location_loading_alertDialog;
+    public String GlobaluniqueAppointmentKey;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -184,8 +188,16 @@ public class AppointmentDetail extends AppCompatActivity{
         view.getLayoutParams().height=viewHeight;
         view.getLayoutParams().width=viewWidth;
 
+        view = findViewById(R.id.Button_Title_Appoint_Bar);
+        viewHeight=(int)(screenHeight*5)/100;
+        viewWidth = (int)(screenWidth*20)/100;
+        view.getLayoutParams().height=viewHeight;
+        view.getLayoutParams().width=viewWidth;
+
        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.detail_appointment_complete_detail_id);
         linearLayout.setVisibility(View.INVISIBLE);
+        Button button = (Button)findViewById(R.id.Button_Title_Appoint_Bar);
+        button.setVisibility(View.INVISIBLE);
         TextView textView = (TextView) findViewById(R.id.detail_appointment_error_id);
         textView.setVisibility(View.INVISIBLE);
 
@@ -248,6 +260,8 @@ APIsCall.detailScheduleAPI(editText.getText().toString());
         linearLayout.removeAllViews();
       linearLayout = (LinearLayout)findViewById(R.id.detail_appointment_complete_detail_id);
         linearLayout.setVisibility(View.VISIBLE);
+        Button button = (Button)findViewById(R.id.Button_Title_Appoint_Bar);
+        button.setVisibility(View.VISIBLE);
 
          String uniquekeyappointment;
          String nameofpatient;
@@ -264,7 +278,11 @@ APIsCall.detailScheduleAPI(editText.getText().toString());
          String appointmenttype;
          String appointmenttypekey;
     try {
+
+
         uniquekeyappointment = (String) jsonObject.get("uniquekeyappointment");
+
+        GlobaluniqueAppointmentKey = uniquekeyappointment;
         nameofpatient = (String) jsonObject.get("nameofpatient");
         contactofpatient = (String) jsonObject.get("contactofpatient");
         mailidofpatient = (String) jsonObject.get("mailidofpatient");
@@ -504,5 +522,38 @@ APIsCall.detailScheduleAPI(editText.getText().toString());
 
         TextView textView = (TextView) findViewById(R.id.detail_appointment_error_id);
         textView.setVisibility(View.VISIBLE);
+    }
+
+
+    protected void Button_Title_On_Title_Bar(View view){
+        Button button_title  =(Button) findViewById(R.id.Button_Title_Appoint_Bar);
+        Animation in = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
+        button_title.startAnimation(in);
+        button_title.setVisibility(VISIBLE);
+
+        context = this;
+        APIsCall.deleteAppointment(GlobaluniqueAppointmentKey);
+
+    }
+
+    public void appointmentDeleted(){
+        location_loading_builder.setMessage("Appointment Cancelled");
+        location_loading_alertDialog =  location_loading_builder.create();
+        location_loading_alertDialog.setCanceledOnTouchOutside(false);
+        location_loading_alertDialog.show();
+
+        Timer timer = new Timer();
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                goToMainBackFromAppointment();
+            }
+        },2000);
+    }
+
+    public void goToMainBackFromAppointment(){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 }

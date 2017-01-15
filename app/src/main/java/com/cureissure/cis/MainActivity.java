@@ -16,6 +16,7 @@ import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -464,6 +465,8 @@ public class MainActivity extends AppCompatActivity {
         String Locationtag = "";
         Double Distance ;
         String Distancetag = "Distance : ";
+        String fees = "";
+        Double Rating ;
         String image = "";
         Double long_list;
         Double lat_list;
@@ -487,11 +490,13 @@ public class MainActivity extends AppCompatActivity {
                     Nametag="Name : ";
                     Name = (String) jsonObject.get("doctorname");
                     Id = (String) jsonObject.get("cisdocid");
+                    fees = (String)jsonObject.get("fees");
                 }
                 else if (type.equals("Hospitals")) {
                     Nametag="Name : ";
                     Name = (String) jsonObject.get("hospitalname");
                     Id = (String) jsonObject.get("cishosid");
+                    fees = (String)jsonObject.get("fees");
                 }
                 else if (type.equals("MedicalShops")) {
                     Nametag="Name : ";
@@ -502,6 +507,7 @@ public class MainActivity extends AppCompatActivity {
                     Nametag="Name : ";
                     Name = (String) jsonObject.get("testcentername");
                     Id = (String) jsonObject.get("cistestid");
+                    fees = (String)jsonObject.get("fees");
                 }
 
                 Locationtag = "Address : ";
@@ -509,6 +515,8 @@ public class MainActivity extends AppCompatActivity {
                 long_list = (Double) jsonObject.get("longitude");
                 lat_list = (Double)jsonObject.get("latitude");
                 image = (String )jsonObject.get("imagethumb");
+                Rating = (Double)jsonObject.get("rating");
+
 
                 Distance =  CalculateDistance.distanceCal(long_user,lat_user,long_list,lat_list);
 
@@ -532,12 +540,22 @@ public class MainActivity extends AppCompatActivity {
                 TextView textViewaddresstag = (TextView)item.findViewById(R.id.rowlayout_linear_address_tag_id);
                 TextView textViewdistance = (TextView)item.findViewById(R.id.rowlayout_linear_distance_id);
                 TextView textViewdistancetag = (TextView)item.findViewById(R.id.rowlayout_linear_distance_tag_id);
+                TextView textViewfees = (TextView)item.findViewById(R.id.rowlayout_linear_fees_id);
+                TextView imageViewone = (TextView)item.findViewById(R.id.starlogoone);
+                TextView imageViewtwo = (TextView)item.findViewById(R.id.starlogotwo);
+                TextView imageViewthree = (TextView)item.findViewById(R.id.starlogothree);
+                TextView imageViewfour = (TextView)item.findViewById(R.id.starlogofour);
+                TextView imageViewfive = (TextView)item.findViewById(R.id.starlogofive);
 
                 if(!type.equals("MedicalShops")) {
                     Specialiazationtag = "Specialization : " ;
                             Specialization = (String) jsonObject.get("specialization");
                     textViewspecialization.setText(Specialization);
                     textViewspecializationtag.setText(Specialiazationtag);
+                    textViewfees.setText(fees);
+                }
+                else{
+                    textViewfees.setVisibility(View.INVISIBLE);
                 }
 
 
@@ -547,6 +565,63 @@ public class MainActivity extends AppCompatActivity {
                 textViewaddresstag.setText(Locationtag);
                 textViewdistance.setText(Double.toString(Distance)+" Km ");
                 textViewdistancetag.setText(Distancetag);
+
+                if(Rating>=1){
+         //           imageViewone.setBackground(ContextCompat.getDrawable(this,R.drawable.starfull));
+                    imageViewone.setBackgroundResource(R.drawable.starfull);
+                    Rating = Rating - 1.0;
+                }
+                else if(Rating==0.5){
+         //           imageViewone.setBackground(ContextCompat.getDrawable(this,R.drawable.starhalf));
+                    imageViewone.setBackgroundResource(R.drawable.starhalf);
+                    Rating = Rating - 0.5;
+                }
+
+                if(Rating>=1){
+//                    imageViewtwo.setBackground(ContextCompat.getDrawable(this,R.drawable.starfull));
+                    imageViewtwo.setBackgroundResource(R.drawable.starfull);
+                    Rating = Rating - 1.0;
+                }
+                else if(Rating==0.5){
+//                    imageViewtwo.setBackground(ContextCompat.getDrawable(this,R.drawable.starhalf));
+                    imageViewtwo.setBackgroundResource(R.drawable.starhalf);
+                    Rating = Rating - 0.5;
+                }
+
+                if(Rating>=1){
+//                    imageViewthree.setBackground(ContextCompat.getDrawable(this,R.drawable.starfull));
+                    imageViewthree.setBackgroundResource(R.drawable.starfull);
+                    Rating = Rating - 1.0;
+                }
+                else if(Rating==0.5){
+//                    imageViewthree.setBackground(ContextCompat.getDrawable(this,R.drawable.starhalf));
+                    imageViewthree.setBackgroundResource(R.drawable.starhalf);
+                    Rating = Rating - 0.5;
+                }
+
+                if(Rating>=1){
+//                    imageViewfour.setBackground(ContextCompat.getDrawable(this,R.drawable.starfull));
+                    imageViewfour.setBackgroundResource(R.drawable.starfull);
+                    Rating = Rating - 1.0;
+                }
+                else if(Rating==0.5){
+//                    imageViewfour.setBackground(ContextCompat.getDrawable(this,R.drawable.starhalf));
+                    imageViewfour.setBackgroundResource(R.drawable.starhalf);
+                    Rating = Rating - 0.5;
+                }
+
+                if(Rating>=1){
+//                    imageViewfive.setBackground(ContextCompat.getDrawable(this,R.drawable.starfull));
+                    imageViewfive.setBackgroundResource(R.drawable.starfull);
+                    Rating = Rating - 1.0;
+                }
+                else if(Rating==0.5){
+//                    imageViewfive.setBackground(ContextCompat.getDrawable(this,R.drawable.starhalf));
+                    imageViewfive.setBackgroundResource(R.drawable.starhalf);
+
+                    Rating = Rating - 0.5;
+                }
+
 
 
 
