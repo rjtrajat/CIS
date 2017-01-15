@@ -1,8 +1,11 @@
 package com.cureissure.cis;
 
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -525,18 +528,56 @@ APIsCall.detailScheduleAPI(editText.getText().toString());
     }
 
 
-    protected void Button_Title_On_Title_Bar(View view){
+    protected void Button_Title_appoint_On_Title_Bar(View view){
         Button button_title  =(Button) findViewById(R.id.Button_Title_Appoint_Bar);
         Animation in = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
         button_title.startAnimation(in);
         button_title.setVisibility(VISIBLE);
 
-        context = this;
-        APIsCall.deleteAppointment(GlobaluniqueAppointmentKey);
+
+
+        location_loading_builder.setMessage("Do you want to cancel your Appointment ?");
+
+
+        //location_loading_alertDialog.setCancelable(false);
+
+
+
+        location_loading_builder.setPositiveButton("YES",
+                new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int id){
+
+                        cancelAppointment();
+                    }
+                });
+        location_loading_builder.setNegativeButton("NO",
+                new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int id){
+
+
+
+                    }
+                });
+
+        location_loading_alertDialog =  location_loading_builder.create();
+        location_loading_alertDialog.show();
+
+
+
 
     }
 
+
+    public void cancelAppointment(){
+        context = this;
+        APIsCall.deleteAppointment(GlobaluniqueAppointmentKey);
+    }
+
     public void appointmentDeleted(){
+
+
+        location_loading_builder = new android.support.v7.app.AlertDialog.Builder(this);
+        
         location_loading_builder.setMessage("Appointment Cancelled");
         location_loading_alertDialog =  location_loading_builder.create();
         location_loading_alertDialog.setCanceledOnTouchOutside(false);
