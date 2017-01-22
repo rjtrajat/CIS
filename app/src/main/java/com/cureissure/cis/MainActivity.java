@@ -213,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    void onClickRegister(){
+    public  void onClickRegister(){
         Intent myIntent = new Intent(this, registration.class);
         startActivity(myIntent);
     }
@@ -240,17 +240,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    void RegisterClick(View view){
+    public  void RegisterClick(View view){
         builder_register.show();
         context = this;
     }
-    void ScheduleClick(View view){
+    public  void ScheduleClick(View view){
        // APIsCall.detailScheduleAPI();
        // APIsCall.context = this;
         Intent intent = new Intent(this,AppointmentDetail.class);
         startActivity(intent);
     }
-    void MedicalShopClick(View view){
+    public  void MedicalShopClick(View view){
         location_loading_builder = new android.support.v7.app.AlertDialog.Builder(this);
         location_loading_builder.setMessage("Loading , please wait");
         location_loading_alertDialog =  location_loading_builder.create();
@@ -265,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
         APIsCall.detailMedicalShopAPI();
         context = this;
     }
-    void TestCenterClick(View view){
+    public  void TestCenterClick(View view){
 
         location_loading_builder = new android.support.v7.app.AlertDialog.Builder(this);
         location_loading_builder.setMessage("Loading , please wait");
@@ -283,11 +283,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    void Aboutclick(View view){
+    public void Aboutclick(View view){
         Intent intent = new Intent(this,Aboutus.class);
         startActivity(intent);
     }
-    void Change_location_click(View view){
+   public void Change_location_click(View view){
         location_loading_builder = new android.support.v7.app.AlertDialog.Builder(this);
         location_loading_builder.setMessage("Loading , please wait");
         location_loading_alertDialog =  location_loading_builder.create();
@@ -298,7 +298,7 @@ public class MainActivity extends AppCompatActivity {
         collapse(mDrawerLayout,screen_half,true);
     }
 
-    protected void Button_On_Title_Bar(View view){
+    public void Button_On_Title_Bar(View view){
         Button button_title  =(Button) findViewById(R.id.Button_Title_Bar);
         Animation in = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
         button_title.startAnimation(in);
@@ -351,7 +351,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    protected void Menu_Title_Bar(View view){
+    public void Menu_Title_Bar(View view){
         final ImageView viewToAnimate = (ImageView) findViewById(R.id.Menu_Title_Bar_Id);
         Animation in = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
         viewToAnimate.startAnimation(in);

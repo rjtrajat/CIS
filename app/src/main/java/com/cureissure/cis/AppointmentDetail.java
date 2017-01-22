@@ -528,7 +528,7 @@ APIsCall.detailScheduleAPI(editText.getText().toString());
     }
 
 
-    protected void Button_Title_appoint_On_Title_Bar(View view){
+    public void Button_Title_appoint_On_Title_Bar(View view){
         Button button_title  =(Button) findViewById(R.id.Button_Title_Appoint_Bar);
         Animation in = AnimationUtils.loadAnimation(this, android.R.anim.fade_in);
         button_title.startAnimation(in);
@@ -577,7 +577,7 @@ APIsCall.detailScheduleAPI(editText.getText().toString());
 
 
         location_loading_builder = new android.support.v7.app.AlertDialog.Builder(this);
-        
+
         location_loading_builder.setMessage("Appointment Cancelled");
         location_loading_alertDialog =  location_loading_builder.create();
         location_loading_alertDialog.setCanceledOnTouchOutside(false);
